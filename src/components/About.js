@@ -67,9 +67,9 @@ const About = () => {
                     <Grid item xs={12} sm={6} md={4}>
                         <Card className={classes.card}>
                             <CardContent>
-                                <Typography variant="h5">Jane Smith</Typography>
-                                <Typography variant="body2">Founder & Lead Educator</Typography>
-                                <Typography variant="body1">With over 10 years of experience in early childhood education, Jane is passionate about creating engaging learning experiences.</Typography>
+                                <Typography variant="h5">Divya Tiwari</Typography>
+                                <Typography variant="body2">Founder & Director</Typography>
+                                <Typography variant="body1">With over 10 years of experience in early childhood education, Divya is passionate about creating engaging learning experiences.</Typography>
                             </CardContent>
                         </Card>
                     </Grid>

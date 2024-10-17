@@ -107,8 +107,8 @@ const Home = () => {
                     <Grid item xs={12} sm={6} md={4}>
                         <Card className={classes.card}>
                             <CardContent>
-                                <Typography variant="h5">Jane Smith</Typography>
-                                <Typography variant="body2">Lead Teacher - Early Childhood Education</Typography>
+                                <Typography variant="h5">Divya Tiwari</Typography>
+                                <Typography variant="body2">Founder,Director</Typography>
                             </CardContent>
                         </Card>
                     </Grid>
@@ -149,7 +149,7 @@ const Home = () => {
                     "Kinderbots Pre-School has transformed my child's learning experience. Highly recommended!"
                 </Typography>
                 <Typography variant="body1" align="center">
-                    - Jane Doe, Parent
+                    - Rahul Kumar, Parent
                 </Typography>
             </Paper>
 
