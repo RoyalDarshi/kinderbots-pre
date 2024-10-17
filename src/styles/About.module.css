@@ -1,0 +1,41 @@
+
+
+.about h2 {
+    color: #F26A2A; /* Primary color */
+    margin-bottom: 20px;
+}
+
+.about p {
+    max-width: 800px; /* Limit width for better readability */
+    margin: 0 auto; /* Center the paragraph */
+    line-height: 1.6; /* Improved line spacing */
+    font-size: 1.1rem; /* Slightly larger font size */
+    color: #555; /* Darker text color for better contrast */
+}
+
+.about {
+    padding: 20px;
+    text-align: center;
+}
+
+.about img {
+    max-width: 100%;
+    height: auto;
+    margin: 20px 0;
+}
+
+h3 {
+    color: #F26A2A; /* Theme color */
+}
+
+
+@media (max-width: 768px) {
+    .about h2 {
+        font-size: 1.8rem; /* Responsive font size */
+    }
+
+    .about p {
+        font-size: 1rem; /* Adjusted font size for smaller screens */
+        padding: 0 10px; /* Added padding for smaller screens */
+    }
+}

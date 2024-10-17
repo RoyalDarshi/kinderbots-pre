@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+// src/App.js
+import React from 'react';
+import { ThemeProvider } from '@mui/material/styles';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import theme from './theme';
+import Navbar from './components/Navbar'; // Only Navbar imported
+import Footer from './components/Footer';
+import Home from './components/Home';
+import About from './components/About';
+import Programs from './components/Programs';
+import Admissions from './components/Admissions';
+import Contact from './components/Contact';
+import Enrollment from "./components/Enrollment";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+    return (
+        <ThemeProvider theme={theme}>
+            <Router>
+                <Navbar />
+                <main>
+                    <Routes>
+                        <Route path="/" element={<Home />} />
+                        <Route path="/about" element={<About />} />
+                        <Route path="/programs" element={<Programs />} />
+                        <Route path="/admissions" element={<Admissions />} />
+                        <Route path="/contact" element={<Contact />} />
+                        <Route path="/enroll" element={<Enrollment />} />
+                    </Routes>
+                </main>
+                <Footer />
+            </Router>
+        </ThemeProvider>
+    );
+};
 
 export default App;

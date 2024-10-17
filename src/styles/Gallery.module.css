@@ -1,0 +1,22 @@
+.gallery {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.imageGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+    .imageGrid {
+        grid-template-columns: 1fr;
+    }
+}

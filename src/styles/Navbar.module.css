@@ -1,0 +1,101 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #F26A2A; /* Primary color */
+    padding: 15px 30px; /* Adjusted padding for better spacing */
+    color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+}
+
+.navbar h1 {
+    font-size: 1.5rem; /* Adjusted font size for the title */
+    font-weight: bold; /* Emphasized font weight */
+}
+
+.navLinks {
+    list-style: none;
+    display: flex;
+    gap: 30px; /* Increased gap for better spacing */
+    transition: all 0.3s ease; /* Smooth transition for the menu */
+}
+
+.navLinks a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500; /* Slightly lighter font weight */
+    padding: 8px 15px; /* Added padding for touch targets */
+    border-radius: 5px; /* Rounded corners for buttons */
+    transition: background-color 0.3s ease; /* Smooth background change */
+}
+
+.navLinks a:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Light hover effect */
+}
+
+/* Styles for hamburger menu */
+.hamburger {
+    display: none; /* Hide hamburger by default */
+    flex-direction: column;
+    cursor: pointer;
+    z-index: 10; /* Ensure the hamburger is above other elements */
+}
+
+.line {
+    width: 30px;
+    height: 3px;
+    background-color: white;
+    margin: 4px 0;
+    transition: all 0.3s ease; /* Smooth transition for the lines */
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 10px 15px; /* Adjust padding for mobile */
+    }
+
+    .hamburger {
+        display: flex; /* Show hamburger on mobile */
+    }
+
+    .navLinks {
+        position: absolute;
+        top: 70px; /* Adjust based on your navbar height */
+        left: 0;
+        width: 100%;
+        background-color: #F26A2A; /* Match primary color */
+        flex-direction: column;
+        align-items: center;
+        padding: 10px 0;
+        display: none; /* Hide by default */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Shadow for dropdown */
+    }
+
+    .navLinks.active {
+        display: flex; /* Show links when active */
+    }
+
+    .navLinks a {
+        padding: 15px 20px; /* Increase padding for mobile links */
+        width: 100%; /* Full width for easier clicking */
+        text-align: center;
+        border-radius: 5px; /* Maintain rounded corners for mobile */
+    }
+
+    .navLinks a:hover {
+        background-color: rgba(255, 255, 255, 0.2); /* Light hover effect */
+    }
+
+    .line:nth-child(2) {
+        opacity: 0; /* Hide the middle line when open */
+    }
+
+    .line:first-child {
+        transform: rotate(45deg) translate(6px, 6px); /* Rotate to form X */
+    }
+
+    .line:last-child {
+        transform: rotate(-45deg) translate(6px, -6px); /* Rotate to form X */
+    }
+}

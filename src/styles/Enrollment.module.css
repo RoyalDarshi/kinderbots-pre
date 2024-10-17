@@ -1,0 +1,34 @@
+.enrollment {
+    padding: 50px 20px;
+    text-align: center;
+    background-color: #2DB8B0; /* Secondary color */
+}
+
+.enrollmentForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.input {
+    width: 80%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.button {
+    background-color: #F26A2A; /* Primary color */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .input {
+        width: 100%;
+    }
+}

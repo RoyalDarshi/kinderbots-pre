@@ -1,0 +1,14 @@
+.home {
+    padding: 50px 20px;
+    text-align: center;
+    background-color: #2DB8B0; /* Secondary color */
+}
+
+.home h2 {
+    color: white; /* Text color for visibility */
+}
+
+.home p {
+    font-size: 1.2rem;
+    color: white; /* Text color for visibility */
+}
