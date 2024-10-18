@@ -14,18 +14,36 @@ import MuiAlert from '@mui/material/Alert';
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        padding: theme.spacing(3),
+        padding: theme.spacing(4),
         minHeight: '100vh',
         backgroundColor: '#F6F9FC',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
     },
     paper: {
-        padding: theme.spacing(3),
+        padding: theme.spacing(4),
         backgroundColor: 'white',
         borderRadius: '8px',
-        boxShadow: theme.shadows[3],
+        boxShadow: theme.shadows[4],
+        width: '100%',
+        maxWidth: '600px',
+    },
+    title: {
+        paddingBottom: theme.spacing(2), // Ensure spacing is applied
+        fontWeight: 'bold',
+        color: theme.palette.primary.main,
+    },
+    textField: {
+        marginBottom: theme.spacing(2),
     },
     button: {
         marginTop: theme.spacing(2),
+        width: '100%',
+        backgroundColor: theme.palette.secondary.main,
+        '&:hover': {
+            backgroundColor: theme.palette.secondary.dark,
+        },
     },
 }));
 
@@ -67,7 +85,9 @@ const Contact = () => {
     return (
         <Container className={classes.root}>
             <Paper className={classes.paper}>
-                <Typography variant="h4" align="center">Contact Us</Typography>
+                <Typography variant="h4" align="center" className={classes.title}>
+                    Contact Us
+                </Typography>
                 <form onSubmit={handleSubmit}>
                     <Grid container spacing={2}>
                         {/* Name */}
@@ -79,6 +99,7 @@ const Contact = () => {
                                 name="name"
                                 value={formData.name}
                                 onChange={handleChange}
+                                className={classes.textField}
                             />
                         </Grid>
 
@@ -92,6 +113,7 @@ const Contact = () => {
                                 name="email"
                                 value={formData.email}
                                 onChange={handleChange}
+                                className={classes.textField}
                             />
                         </Grid>
 
@@ -104,6 +126,7 @@ const Contact = () => {
                                 name="subject"
                                 value={formData.subject}
                                 onChange={handleChange}
+                                className={classes.textField}
                             />
                         </Grid>
 
@@ -118,6 +141,7 @@ const Contact = () => {
                                 onChange={handleChange}
                                 multiline
                                 rows={4}
+                                className={classes.textField}
                             />
                         </Grid>
 
@@ -126,7 +150,6 @@ const Contact = () => {
                             <Button
                                 type="submit"
                                 variant="contained"
-                                color="secondary"
                                 className={classes.button}
                             >
                                 Send Message

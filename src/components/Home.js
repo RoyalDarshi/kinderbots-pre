@@ -1,152 +1,153 @@
 // src/pages/Home.js
 import React from 'react';
-import { Container, Typography, Grid, Card, CardContent, Button, Box, Paper, List, ListItem } from '@mui/material';
+import { Container, Typography, Grid, Card, CardContent, Button, Box, Paper } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import img1 from "../assets/gallery1.png";
 import img2 from "../assets/gallery2.png";
 import img3 from "../assets/gallery3.png";
 import img4 from "../assets/gallery4.png";
+import GrowthPoster from "./GrowthPoster";
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        padding: theme.spacing(3),
-        backgroundColor: '#F9F6FB', // Lighter background to add contrast
-        minHeight: '100vh',
+        padding: `${theme.spacing(3)} !important`,
+        backgroundColor: '#F9F6FB !important',
+        minHeight: '100vh !important',
         [theme.breakpoints.down('sm')]: {
-            padding: theme.spacing(2),
+            padding: `${theme.spacing(2)} !important`,
         },
     },
     hero: {
-        textAlign: 'center',
-        padding: theme.spacing(4),
-        background: 'linear-gradient(90deg, #F26A2A 0%, #FFDD00 100%)', // Bright gradient
-        color: 'white',
-        borderRadius: '8px',
-        boxShadow: theme.shadows[3],
+        textAlign: 'center !important',
+        padding: `${theme.spacing(4)} !important`,
+        background: 'linear-gradient(90deg, #F26A2A 0%, #FFDD00 100%) !important',
+        color: 'white !important',
+        borderRadius: '8px !important',
+        boxShadow: `${theme.shadows[3]} !important`,
         [theme.breakpoints.down('sm')]: {
-            padding: theme.spacing(2),
+            padding: `${theme.spacing(2)} !important`,
         },
     },
     section: {
-        margin: theme.spacing(4, 0),
-        padding: theme.spacing(3), // Increased padding for better spacing
-        backgroundColor: '#fff',
-        borderRadius: '12px',
-        boxShadow: theme.shadows[3],
+        margin: `${theme.spacing(4, 0)} !important`,
+        padding: `${theme.spacing(3)} !important`,
+        backgroundColor: '#fff !important',
+        borderRadius: '12px !important',
+        boxShadow: `${theme.shadows[3]} !important`,
         [theme.breakpoints.down('sm')]: {
-            margin: theme.spacing(2, 0),
-            padding: theme.spacing(2),
+            margin: `${theme.spacing(2, 0)} !important`,
+            padding: `${theme.spacing(2)} !important`,
         },
     },
     card: {
-        margin: theme.spacing(2),
-        textAlign: 'center',
-        backgroundColor: '#FFF',
-        boxShadow: theme.shadows[2],
-        borderRadius: '10px',
-        transition: 'transform 0.3s ease, background-color 0.3s ease',
+        margin: `${theme.spacing(2)} !important`,
+        textAlign: 'center !important',
+        backgroundColor: '#FFF !important',
+        boxShadow: `${theme.shadows[2]} !important`,
+        borderRadius: '10px !important',
+        transition: 'transform 0.3s ease, background-color 0.3s ease !important',
         '&:hover': {
-            transform: 'scale(1.05)',
-            backgroundColor: '#F9F6FB',
+            transform: 'scale(1.05) !important',
+            backgroundColor: '#F9F6FB !important',
         },
     },
     button: {
-        marginTop: theme.spacing(2),
-        backgroundColor: '#2DB8B0',
-        color: 'white',
-        fontSize: '16px',
-        fontWeight: 'bold',
-        borderRadius: '8px',
+        marginTop: `${theme.spacing(2)} !important`,
+        backgroundColor: '#2DB8B0 !important',
+        color: 'white !important',
+        fontSize: '16px !important',
+        fontWeight: 'bold !important',
+        borderRadius: '8px !important',
         '&:hover': {
-            backgroundColor: '#28A598',
+            backgroundColor: '#28A598 !important',
         },
     },
     imageGallery: {
-        display: 'flex',
-        justifyContent: 'center',
-        flexWrap: 'wrap',
-        gap: theme.spacing(2),
+        display: 'flex !important',
+        justifyContent: 'center !important',
+        flexWrap: 'wrap !important',
+        gap: `${theme.spacing(2)} !important`,
     },
     galleryImage: {
-        width: '300px',
-        height: '200px',
-        borderRadius: '12px',
-        objectFit: 'cover',
+        width: '300px !important',
+        height: '200px !important',
+        borderRadius: '12px !important',
+        objectFit: 'cover !important',
         [theme.breakpoints.down('sm')]: {
-            width: '100%',
+            width: '100% !important',
         },
     },
     directorMessage: {
-        padding: theme.spacing(3),
-        backgroundColor: '#FFDD00',
-        color: '#2DB8B0',
-        borderRadius: '12px',
-        boxShadow: theme.shadows[3],
-        textAlign: 'center',
+        padding: `${theme.spacing(3)} !important`,
+        backgroundColor: '#FFDD00 !important',
+        color: '#2DB8B0 !important',
+        borderRadius: '12px !important',
+        boxShadow: `${theme.shadows[3]} !important`,
+        textAlign: 'center !important',
         [theme.breakpoints.down('sm')]: {
-            padding: theme.spacing(2),
+            padding: `${theme.spacing(2)} !important`,
         },
     },
     directorTitle: {
-        color: '#f54292',
-        fontWeight: 'bold',
-        marginBottom: theme.spacing(2),
+        color: '#f54292 !important',
+        fontWeight: 'bold !important',
+        marginBottom: `${theme.spacing(2)} !important`,
     },
     directorBody: {
-        marginBottom: theme.spacing(2),
-        color: '#333',
+        marginBottom: `${theme.spacing(2)} !important`,
+        color: '#333 !important',
     },
     directorName: {
-        fontWeight: 'bold',
-        fontSize: '24px',
-        color: '#333',
-        marginTop: theme.spacing(2),
+        fontWeight: 'bold !important',
+        fontSize: '24px !important',
+        color: '#333 !important',
+        marginTop: `${theme.spacing(2)} !important`,
     },
     directorRole: {
-        fontStyle: 'italic',
-        color: '#666',
+        fontStyle: 'italic !important',
+        color: '#666 !important',
     },
     directorBadge: {
-        backgroundColor: '#2DB8B0',
-        color: 'white',
-        padding: '5px 10px',
-        borderRadius: '5px',
-        display: 'inline-block',
-        marginTop: theme.spacing(1),
+        backgroundColor: '#2DB8B0 !important',
+        color: 'white !important',
+        padding: '5px 10px !important',
+        borderRadius: '5px !important',
+        display: 'inline-block !important',
+        marginTop: `${theme.spacing(1)} !important`,
     },
     featuresSection: {
-        padding: theme.spacing(5),
-        backgroundColor: '#e0f7fa',
+        padding: `${theme.spacing(5)} !important`,
+        backgroundColor: '#e0f7fa !important',
     },
     featureTitle: {
-        textAlign: 'center',
-        color: '#00796b',
-        marginBottom: theme.spacing(3),
-        fontWeight: 'bold',
+        textAlign: 'center !important',
+        color: '#00796b !important',
+        marginBottom: `${theme.spacing(3)} !important`,
+        fontWeight: 'bold !important',
     },
     featureCard: {
-        padding: theme.spacing(2),
-        textAlign: 'center',
-        backgroundColor: '#ffffff',
-        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-        borderRadius: '8px',
-        margin: theme.spacing(2, 0),
-        borderLeft: '6px solid #00796b',
-        transition: 'transform 0.2s',
+        padding: `${theme.spacing(2)} !important`,
+        textAlign: 'center !important',
+        backgroundColor: '#ffffff !important',
+        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1) !important',
+        borderRadius: '8px !important',
+        margin: `${theme.spacing(2, 0)} !important`,
+        borderLeft: '6px solid #00796b !important',
+        transition: 'transform 0.2s !important',
         '&:hover': {
-            transform: 'scale(1.05)',
-            backgroundColor: '#80deea',
+            transform: 'scale(1.05) !important',
+            backgroundColor: '#80deea !important',
         },
     },
     featureNumber: {
-        fontSize: '1.5rem', // Increased font size for better visibility
-        fontWeight: 'bold',
-        color: '#00796b',
+        fontSize: '1.5rem !important',
+        fontWeight: 'bold !important',
+        color: '#00796b !important',
     },
     featureText: {
-        marginTop: theme.spacing(1),
-        fontWeight: '500',
-        color: '#333',
+        marginTop: `${theme.spacing(1)} !important`,
+        fontWeight: '500 !important',
+        color: '#333 !important',
     },
 }));
 
@@ -192,8 +193,8 @@ const Home = () => {
 
             {/* Mission Statement Section */}
             <Paper className={classes.section}>
-                <Typography variant="h4" align="center" style={{ color: '#2DB8B0' }}>Our Mission</Typography>
-                <Typography variant="body1" align="center" style={{ margin: '20px 0', color: '#555' }}>
+                <Typography variant="h4" align="center" style={{ color: '#2DB8B0 !important' }}>Our Mission</Typography>
+                <Typography variant="body1" align="center" style={{ margin: '20px 0', color: '#555 !important' }}>
                     At Kinderbots Pre-School, our mission is to nurture, inspire, and cultivate young minds through a
                     play-based curriculum that encourages creativity, curiosity, and a love for learning.
                 </Typography>
@@ -203,81 +204,38 @@ const Home = () => {
             <Paper className={classes.directorMessage}>
                 <Typography variant="h5" className={classes.directorTitle}>Director's Message</Typography>
                 <Typography variant="body1" className={classes.directorBody}>
-                    Welcome to Kinderbots, where young minds explore, create, and innovate alongside our cutting-edge
-                    companions.
+                    "Our goal is to provide a nurturing and stimulating environment where children can thrive academically,
+                    emotionally, and socially. At Kinderbots, we believe that every child is unique and deserves a
+                    personalized learning experience."
                 </Typography>
-                <Typography variant="body1" className={classes.directorBody}>
-                    Here, curiosity meets technology, nurturing a place where imagination knows no bounds.
-                </Typography>
-                <Typography variant="body1" className={classes.directorBody}>
-                    Let’s embark on this exciting journey together.
-                </Typography>
+                <Typography className={classes.directorName}>Divya Tiwari</Typography>
                 <Box className={classes.directorBadge}>Founder, Director</Box>
-                <Typography variant="h5" className={classes.directorName}>Divya Tiwari</Typography>
-                <Typography variant="body1" className={classes.directorRole}>KINDERBOTS PVT. LTD.</Typography>
+                <Typography className={classes.directorRole}>Kinderbots Pre-School</Typography>
             </Paper>
 
-            {/* Programs Section */}
-            <Paper className={classes.section}>
-                <Typography variant="h4" align="center" style={{ color: '#FF6F61' }}>Our Programs</Typography>
-                <Grid container spacing={3} className={classes.imageGallery}>
-                    <Grid item xs={12} sm={6} md={4}>
-                        <Card className={classes.card}>
-                            <img src={img1} alt="Program 1" className={classes.galleryImage} />
-                            <CardContent>
-                                <Typography variant="h5">Creative Play</Typography>
-                                <Typography variant="body2" color="textSecondary">Fostering creativity through play.</Typography>
-                            </CardContent>
-                        </Card>
-                    </Grid>
-                    <Grid item xs={12} sm={6} md={4}>
-                        <Card className={classes.card}>
-                            <img src={img2} alt="Program 2" className={classes.galleryImage} />
-                            <CardContent>
-                                <Typography variant="h5">Art & Crafts</Typography>
-                                <Typography variant="body2" color="textSecondary">Exploring art and craft skills.</Typography>
-                            </CardContent>
-                        </Card>
-                    </Grid>
-                    <Grid item xs={12} sm={6} md={4}>
-                        <Card className={classes.card}>
-                            <img src={img3} alt="Program 3" className={classes.galleryImage} />
-                            <CardContent>
-                                <Typography variant="h5">STEM Activities</Typography>
-                                <Typography variant="body2" color="textSecondary">Engaging in STEM learning through fun.</Typography>
-                            </CardContent>
-                        </Card>
-                    </Grid>
-                </Grid>
-            </Paper>
-
-            {/* Salient Features Section */}
-            <Paper className={classes.featuresSection}>
-                <Typography variant="h4" className={classes.featureTitle}>Salient Features</Typography>
-                <Grid container spacing={2}>
+            {/* Features Section */}
+            <section className={classes.featuresSection}>
+                <Typography variant="h4" align="center" className={classes.featureTitle}>
+                    Our Programs
+                </Typography>
+                <Grid container spacing={4}>
                     {salientFeatures.map((feature, index) => (
                         <Grid item xs={12} sm={6} md={4} key={index}>
-                            <div className={classes.featureCard}>
-                                <div className={classes.featureNumber}>{feature.number}</div>
-                                <Typography variant="body2" className={classes.featureText}>{feature.text}</Typography>
-                            </div>
+                            <Card className={classes.featureCard}>
+                                <CardContent>
+                                    <Typography variant="h5" className={classes.featureNumber}>
+                                        {feature.number}
+                                    </Typography>
+                                    <Typography className={classes.featureText}>
+                                        {feature.text}
+                                    </Typography>
+                                </CardContent>
+                            </Card>
                         </Grid>
                     ))}
                 </Grid>
-            </Paper>
-
-            {/* Footer Section */}
-            <Paper className={classes.section}>
-                <Typography variant="h6" align="center" style={{ color: '#2DB8B0' }}>Contact Us</Typography>
-                <List>
-                    <ListItem>Address: 123 Kinderbots Lane, Education City</ListItem>
-                    <ListItem>Email: info@kinderbots.com</ListItem>
-                    <ListItem>Phone: +1 (234) 567-8901</ListItem>
-                </List>
-                <Button variant="contained" href="/contact" className={classes.button}>
-                    Get in Touch
-                </Button>
-            </Paper>
+            </section>
+            <GrowthPoster />
         </Container>
     );
 };

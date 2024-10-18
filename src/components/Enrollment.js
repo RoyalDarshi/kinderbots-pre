@@ -17,15 +17,32 @@ const useStyles = makeStyles((theme) => ({
         padding: theme.spacing(3),
         minHeight: '100vh',
         backgroundColor: '#F6F9FC',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
     },
     paper: {
-        padding: theme.spacing(3),
+        padding: theme.spacing(4),
         backgroundColor: 'white',
         borderRadius: '8px',
-        boxShadow: theme.shadows[3],
+        boxShadow: theme.shadows[5],
+        width: '100%',
+        maxWidth: '600px',
+    },
+    title: {
+        paddingBottom: theme.spacing(2),
+        fontWeight: 'bold',
+        color: theme.palette.primary.main,
     },
     button: {
         marginTop: theme.spacing(2),
+        backgroundColor: theme.palette.secondary.main,
+        '&:hover': {
+            backgroundColor: theme.palette.secondary.dark,
+        },
+    },
+    textField: {
+        marginBottom: theme.spacing(2),
     },
 }));
 
@@ -71,7 +88,9 @@ const Enrollment = () => {
     return (
         <Container className={classes.root}>
             <Paper className={classes.paper}>
-                <Typography variant="h4" align="center">Enrollment Form</Typography>
+                <Typography variant="h4" align="center" className={classes.title}>
+                    Enrollment Form
+                </Typography>
                 <form onSubmit={handleSubmit}>
                     <Grid container spacing={2}>
 
@@ -84,6 +103,8 @@ const Enrollment = () => {
                                 name="childName"
                                 value={formData.childName}
                                 onChange={handleChange}
+                                className={classes.textField}
+                                variant="outlined"
                             />
                         </Grid>
 
@@ -96,6 +117,8 @@ const Enrollment = () => {
                                 name="parentName"
                                 value={formData.parentName}
                                 onChange={handleChange}
+                                className={classes.textField}
+                                variant="outlined"
                             />
                         </Grid>
 
@@ -109,6 +132,8 @@ const Enrollment = () => {
                                 name="email"
                                 value={formData.email}
                                 onChange={handleChange}
+                                className={classes.textField}
+                                variant="outlined"
                             />
                         </Grid>
 
@@ -122,6 +147,8 @@ const Enrollment = () => {
                                 name="phone"
                                 value={formData.phone}
                                 onChange={handleChange}
+                                className={classes.textField}
+                                variant="outlined"
                             />
                         </Grid>
 
@@ -136,6 +163,8 @@ const Enrollment = () => {
                                 onChange={handleChange}
                                 multiline
                                 rows={2}
+                                className={classes.textField}
+                                variant="outlined"
                             />
                         </Grid>
 
@@ -152,6 +181,8 @@ const Enrollment = () => {
                                 }}
                                 value={formData.dateOfBirth}
                                 onChange={handleChange}
+                                className={classes.textField}
+                                variant="outlined"
                             />
                         </Grid>
 
@@ -160,8 +191,8 @@ const Enrollment = () => {
                             <Button
                                 type="submit"
                                 variant="contained"
-                                color="secondary"
                                 className={classes.button}
+                                fullWidth
                             >
                                 Submit Enrollment
                             </Button>
