@@ -1,55 +1,86 @@
-// src/components/Programs.js
 import React from 'react';
-import { Container, Typography, Grid, Card, CardContent, CardMedia } from '@mui/material';
+import { Paper, Typography, Grid, Box } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 
-const programs = [
-    {
-        title: 'Creative Arts',
-        description: 'An engaging program that encourages artistic expression through various mediums.',
-        image: 'https://via.placeholder.com/150',
+const useStyles = makeStyles((theme) => ({
+    section: {
+        padding: `${theme.spacing(4)} !important`,
+        marginTop: `${theme.spacing(4)} !important`,
+        borderRadius: '12px !important',
+        boxShadow: `${theme.shadows[3]} !important`,
+        backgroundColor: '#FFDD00 !important',
+        position: 'relative !important',
+        overflow: 'hidden !important',
     },
-    {
-        title: 'Early Math Skills',
-        description: 'Fun and interactive activities that introduce basic math concepts.',
-        image: 'https://via.placeholder.com/150',
+    title: {
+        color: '#2DB8B0 !important',
+        marginBottom: `${theme.spacing(2)} !important`,
+        textAlign: 'center !important',
+        fontWeight: 'bold !important',
+        animation: '$fadeIn 1s ease-out !important', // Fade-in animation
     },
-    {
-        title: 'Language Development',
-        description: 'Programs designed to enhance vocabulary and communication skills.',
-        image: 'https://via.placeholder.com/150',
+    programCard: {
+        padding: `${theme.spacing(3)} !important`,
+        textAlign: 'center !important',
+        borderRadius: '12px !important',
+        boxShadow: theme.shadows[3],
+        backgroundColor: '#FFF !important',
+        transition: 'transform 0.3s, box-shadow 0.3s !important',
+        position: 'relative !important',
+        overflow: 'hidden !important',
+        '&:hover': {
+            transform: 'scale(1.05) translateY(-5px) !important', // Added slight lift effect
+            boxShadow: theme.shadows[10],
+        },
     },
-    {
-        title: 'Physical Education',
-        description: 'Activities that promote physical health and teamwork.',
-        image: 'https://via.placeholder.com/150',
+    programIcon: {
+        fontSize: '50px !important',
+        marginBottom: `${theme.spacing(1)} !important`,
+        color: '#F26A2A',
     },
-];
+    backgroundDecor: {
+        position: 'absolute !important',
+        width: '60px !important',
+        height: '60px !important',
+        borderRadius: '50% !important',
+        backgroundColor: 'rgba(255, 255, 255, 0.2) !important',
+        opacity: 0.5,
+        animation: '$pulse 2s infinite !important',
+    },
+    '@keyframes pulse': {
+        '0%': { transform: 'scale(1)' },
+        '50%': { transform: 'scale(1.05)' },
+        '100%': { transform: 'scale(1)' },
+    },
+    '@keyframes fadeIn': {
+        '0%': { opacity: 0 },
+        '100%': { opacity: 1 },
+    },
+}));
 
-const Programs = () => {
+const ProgramsSection = () => {
+    const classes = useStyles();
+
     return (
-        <Container>
-            <Typography variant="h4" gutterBottom>
+        <Paper className={classes.section}>
+            <Typography variant="h4" className={classes.title}>
                 Our Programs
             </Typography>
             <Grid container spacing={3}>
-                {programs.map((program) => (
-                    <Grid item xs={12} sm={6} md={3} key={program.title}>
-                        <Card>
-                            <CardMedia component="img" height="140" image={program.image} alt={program.title} />
-                            <CardContent>
-                                <Typography variant="h5" gutterBottom>
-                                    {program.title}
-                                </Typography>
-                                <Typography variant="body2" color="text.secondary">
-                                    {program.description}
-                                </Typography>
-                            </CardContent>
-                        </Card>
+                {['Early Learners', 'Creative Arts', 'Science Explorers', 'Language Fun'].map((program) => (
+                    <Grid item xs={12} sm={6} md={3} key={program}>
+                        <Paper className={classes.programCard}>
+                            <Box className={classes.programIcon}>&#127859;</Box> {/* Icon for the program */}
+                            <Typography variant="h6" style={{ color: '#2DB8B0' }}>{program}</Typography>
+                            <Typography variant="body2">Engaging activities to stimulate young minds.</Typography>
+                            <div className={classes.backgroundDecor} style={{ top: '10%', left: '10%' }} />
+                            <div className={classes.backgroundDecor} style={{ bottom: '10%', right: '10%' }} />
+                        </Paper>
                     </Grid>
                 ))}
             </Grid>
-        </Container>
+        </Paper>
     );
 };
 
-export default Programs;
+export default ProgramsSection;
