@@ -7,6 +7,7 @@ const useStyles = makeStyles((theme) => ({
         padding: `${theme.spacing(4)} !important`,
         marginTop: `${theme.spacing(4)} !important`,
         borderRadius: '12px !important',
+        marginBottom: `${theme.spacing(4)} !important`,
         boxShadow: `${theme.shadows[3]} !important`,
         backgroundColor: '#FFDD00 !important',
         position: 'relative !important',

@@ -1,3 +1,4 @@
+// src/components/Navbar.js
 import React, { useState } from 'react';
 import {
     AppBar,
@@ -27,6 +28,7 @@ import { styled } from '@mui/system';
 const StyledAppBar = styled(AppBar)(({ theme }) => ({
     backgroundColor: '#ff5e78 !important', // Vibrant primary color
     boxShadow: '0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06) !important',
+    marginBottom: theme.spacing(2),
 }));
 
 const StyledListItem = styled(ListItem)(({ theme }) => ({
@@ -86,9 +88,14 @@ const Navbar = () => {
             to={item.link}
             key={item.label}
             onClick={() => handleNavItemClick(item.link)} // Close drawer on click
+            sx={{
+                '&.active': {
+                    backgroundColor: '#6be3ff !important',
+                },
+            }}
         >
             <ListItemIcon style={{ color: 'white' }}>{item.icon}</ListItemIcon>
-            <ListItemText primary={item.label} style={{ color: 'white !important' }} />
+            <ListItemText primary={item.label} sx={{ color: 'white' }} />
         </StyledListItem>
     );
 
@@ -96,7 +103,7 @@ const Navbar = () => {
         <>
             <StyledAppBar position="static">
                 <Toolbar>
-                    <Typography variant="h6" style={{ flexGrow: 1, color: 'white !important' }}>
+                    <Typography variant="h6" sx={{ flexGrow: 1, color: 'white' }}>
                         Kinderbots Pre-School
                     </Typography>
                     {isMobile ? (

@@ -1,3 +1,4 @@
+// src/components/AboutComponents/Features.js
 import React from 'react';
 import { Typography, Box, Grid, Card, CardContent, CardMedia } from '@mui/material';
 import { makeStyles } from '@mui/styles'; // Import makeStyles
@@ -10,49 +11,95 @@ import Feature5Image from '../assets/feature5.png';
 import Feature6Image from '../assets/feature6.webp';
 import Feature7Image from '../assets/feature7.webp';
 import Feature8Image from '../assets/feature8.webp';
+import FeatureBgGraphic from '../assets/featue-bg.webp';  // Example graphic for visual background
 
-// Define your styles using makeStyles
 const useStyles = makeStyles((theme) => ({
     container: {
+        position: 'relative',
         textAlign: 'center',
-        padding: theme.spacing(4),
-        backgroundColor: '#f5f5f5',
+        padding: '80px 20px',  // Extra padding for spacing
+        background: 'linear-gradient(135deg, #f7fbfc, #fdeff4)', // Light gradient for a vibrant feel
+        overflow: 'hidden',
+    },
+    backgroundGraphic: {
+        position: 'absolute',
+        top: '-50px',
+        right: '-50px',
+        width: '300px',
+        opacity: 0.1,  // Faint graphic in the background
+        zIndex: 0,
     },
     logo: {
-        marginBottom: theme.spacing(2),
+        marginBottom: '30px',
+        animation: 'spin 4s linear infinite',
+        zIndex: 2,  // Ensure it sits above the background graphic
     },
     title: {
-        marginBottom: theme.spacing(2),
+        marginBottom: '16px',
         fontWeight: 'bold',
-        color: '#333',
+        fontSize: '2.8rem',
+        color: '#6A0572',  // Deep purple for a modern look
+        textShadow: '1px 3px 5px rgba(0,0,0,0.3)',
+        zIndex: 2,
     },
     subtitle: {
-        marginBottom: theme.spacing(1),
+        marginBottom: '20px',
         fontWeight: '600',
+        fontSize: '2.2rem',
         color: '#F26A2A',
+        textTransform: 'uppercase',
+        zIndex: 2,
     },
     body: {
-        marginBottom: theme.spacing(1),
+        marginBottom: '10px',
+        fontSize: '1.3rem',
         color: '#666',
+        fontStyle: 'italic',
+        zIndex: 2,
     },
     card: {
-        borderRadius: '8px',
-        boxShadow: '0 4px 10px rgba(0, 0, 0, 0.2)',
+        position: 'relative',
+        borderRadius: '16px',
+        boxShadow: '0 8px 24px rgba(0, 0, 0, 0.15)',  // Deeper shadow for depth
+        overflow: 'hidden',
+        transition: 'transform 0.4s ease, box-shadow 0.4s ease',
+        '&:hover': {
+            transform: 'translateY(-10px) scale(1.02)',  // Slight zoom and elevation on hover
+            boxShadow: '0 12px 28px rgba(0, 0, 0, 0.25)',
+        },
+        zIndex: 2,
     },
     cardImage: {
-        borderRadius: '8px 8px 0 0',
+        borderRadius: '16px 16px 0 0',
         height: '200px',
+        objectFit: 'cover',
+        zIndex: 2,
+    },
+    featureGraphic: {
+        position: 'absolute',
+        bottom: '-20px',
+        left: '-20px',
+        width: '150px',
+        zIndex: 1,  // Ensure the graphic is behind the content
+        opacity: 0.15,  // Faint, non-intrusive visual
+    },
+    "@keyframes spin": {
+        "0%": { transform: "rotate(0deg)" },
+        "100%": { transform: "rotate(360deg)" },
     },
 }));
 
 function Features() {
-    const classes = useStyles(); // Use the defined styles
+    const classes = useStyles();
 
     return (
         <Box className={classes.container}>
-            <img src={KinderbotsLogo} alt="Kinderbots Logo" width="200" className={classes.logo} />
+            {/* Background Visual Graphics */}
+            <img src={FeatureBgGraphic} alt="Background Graphic" className={classes.backgroundGraphic} />
+
+            <img src={KinderbotsLogo} alt="Kinderbots Logo" width="150" className={classes.logo} />
             <Typography variant="h2" className={classes.title}>
-                Features That Makes Us the Future Play School
+                Features That Make Us the Future Play School
             </Typography>
             <Typography variant="h4" className={classes.subtitle}>
                 Kinderbots
@@ -89,13 +136,11 @@ function Features() {
                                 </Typography>
                             </CardContent>
                         </Card>
+                        {/* Decorative graphic for each feature */}
+                        <img src={FeatureBgGraphic} alt="Feature Background Graphic" className={classes.featureGraphic} />
                     </Grid>
                 ))}
             </Grid>
-
-            {/*<Typography variant="h6" style={{ marginTop: '32px', color: '#F26A2A' }}>*/}
-            {/*    NO Royalty*/}
-            {/*</Typography>*/}
         </Box>
     );
 }
