@@ -1,205 +1,230 @@
-import React, { useState } from 'react';
-import { Paper, Typography, Grid, Box, Button, Dialog, DialogTitle, DialogContent, DialogActions, Slide } from '@mui/material';
-import { makeStyles } from '@mui/styles';
-import { useTheme } from '@mui/material/styles';
+import React from 'react';
+import {Paper, Typography, Grid, Button, Box, Link} from '@mui/material';
+import { styled } from '@mui/system';
+import { School, EmojiObjects, Favorite, Accessibility } from '@mui/icons-material';
+import banner from "../assets/about-banner.webp";
+import {useNavigate} from "react-router-dom"; // Ensure this path is correct
 
-const useStyles = makeStyles((theme) => ({
-    section: {
-        padding: '16px !important', // Reduced padding for mobile
-        marginTop: '20px !important',
-        borderRadius: '12px !important',
-        boxShadow: `${theme.shadows[3]} !important`,
-        backgroundColor: '#FFDD00 !important',
-        position: 'relative !important',
-        overflow: 'hidden !important',
-    },
-    title: {
-        color: '#2DB8B0 !important',
-        marginBottom: '12px !important',
-        textAlign: 'center !important',
-        fontWeight: 'bold !important',
-        fontSize: '6vw !important', // Responsive font size
-        [theme.breakpoints.up('sm')]: {
-            fontSize: '2vw !important', // Larger on bigger screens
-        },
-    },
-    dialog: {
-        background: 'linear-gradient(135deg, #2C3E50 10%, #4CA1AF 90%) !important', // Gradient background (dark blue to teal)
-        color: '#ECF0F1 !important', // Light gray text for better contrast
-        width: '95vw !important', // Responsive dialog width for mobile
-        maxWidth: '600px !important', // Max width for larger screens
-        margin: 'auto !important',
-        borderRadius: '12px !important',
-        boxShadow: '0 4px 12px rgba(0, 0, 0, 0.5) !important', // Added subtle shadow for depth
-    },
-    dialogTitle: {
-        fontSize: '5vw !important', // Responsive title font size for mobile
-        textAlign: 'center !important',
-        color: '#F39C12 !important', // Bright orange for title to stand out
-        fontWeight: 'bold !important',
-        textShadow: '1px 1px 2px rgba(0, 0, 0, 0.7) !important', // More pronounced text shadow for readability
-        [theme.breakpoints.up('sm')]: {
-            fontSize: '2.5vw !important', // Slightly larger font size on bigger screens
-        },
-    },
-    dialogContent: {
-        color: '#ECF0F1 !important', // Light gray text for contrast
-        textShadow: '1px 1px 3px rgba(0, 0, 0, 0.7) !important', // Stronger text shadow for better readability on dark background
-        fontSize: '4vw !important', // Responsive content font size for mobile
-        padding: '16px !important',
-        lineHeight: '1.5 !important', // Increased line height for better readability
-        [theme.breakpoints.up('sm')]: {
-            fontSize: '1.5vw !important', // Larger font size for bigger screens
-        },
-    },
-    dialogActions: {
-        justifyContent: 'center !important',
-        marginTop: '20px !important', // Added margin for spacing
-    },
-    knowMoreButton: {
-        marginTop: '10px !important',
-        backgroundColor: '#00796b !important',
-        color: '#fff !important',
-        transition: 'background-color 0.3s, transform 0.3s !important',
-        '&:hover': {
-            backgroundColor: '#004d40 !important',
-
-        },
-    },
-    programCard: {
-        padding: `${theme.spacing(3)} !important`,
-        textAlign: 'center !important',
-        borderRadius: '12px !important',
-        boxShadow: theme.shadows[3],
-        backgroundColor: '#FFF !important',
-        transition: 'transform 0.3s, box-shadow 0.3s !important',
-        '&:hover': {
-            transform: 'scale(1.05)',
-            boxShadow: theme.shadows[10],
-        },
-    },
-    programIcon: {
-        fontSize: '50px !important',
-        marginBottom: `${theme.spacing(1)} !important`,
-        color: '#F26A2A',
-    },
-    backgroundDecor: {
-        position: 'absolute !important',
-        width: '50px !important',
-        height: '50px !important',
-        borderRadius: '50% !important',
-        backgroundColor: 'rgba(255, 255, 255, 0.2) !important',
-        opacity: 0.5,
-        animation: '$pulse 2s infinite !important',
-    },
-    '@keyframes pulse': {
-        '0%': { transform: 'scale(1)' },
-        '50%': { transform: 'scale(1.05)' },
-        '100%': { transform: 'scale(1)' },
-    },
-}));
-
-// Slide animation for modal
-const Transition = React.forwardRef(function Transition(props, ref) {
-    return <Slide direction="up" ref={ref} {...props} />;
+const Root = styled('div')({
+    backgroundColor: '#FFEBEE', // Light pink background for a soft, playful look
+    padding: '48px 0',
+    minHeight: '100vh',
 });
 
+const Section = styled(Paper)({
+    backgroundColor: '#FFFFFF',
+    borderRadius: '25px',
+    padding: '48px',
+    marginBottom: '32px',
+    boxShadow: '0px 8px 20px rgba(0, 0, 0, 0.1)', // Softer shadow
+    position: 'relative', // To position the effects correctly
+    overflow: 'hidden', // Hide overflow for animation effects
+});
+
+const Title = styled(Typography)({
+    textAlign: 'center',
+    fontWeight: 'bold',
+    color: '#2C3E50', // Dark blue color
+    marginBottom: '32px',
+    fontSize: '3rem',
+    fontFamily: 'Comic Sans MS, cursive, sans-serif', // Playful font
+    '@media (max-width:600px)': {
+        fontSize: '2.5rem',
+    },
+});
+
+const SubTitle = styled(Typography)({
+    textAlign: 'center',
+    fontWeight: '500',
+    color: '#2980B9', // Soft blue color
+    marginBottom: '32px',
+    fontSize: '1.5rem',
+    lineHeight: 1.5,
+});
+
+const Card = styled(Box)({
+    backgroundColor: '#FFFAF0', // Soft floral background for the card
+    padding: '32px',
+    textAlign: 'center',
+    borderRadius: '15px',
+    boxShadow: '0px 5px 15px rgba(0, 0, 0, 0.1)',
+    transition: 'transform 0.3s ease, box-shadow 0.3s ease', // Smooth transition
+    '&:hover': {
+        transform: 'translateY(-5px) scale(1.05)', // Lift effect on hover
+        boxShadow: '0px 10px 20px rgba(0, 0, 0, 0.2)', // Darker shadow on hover
+    },
+    position: 'relative', // Needed for background effects
+    overflow: 'hidden', // Hide overflow for background animation
+});
+
+const Icon = styled('div')({
+    fontSize: '5rem', // Larger icons
+    color: '#F39C12', // Playful orange color for icons
+    marginBottom: '16px',
+});
+
+const KnowMoreButton = styled(Button)({
+    marginTop: '32px',
+    backgroundColor: '#FF6F61', // Bright coral color for the button
+    color: '#fff',
+    fontWeight: 'bold',
+    padding: '12px 32px',
+    borderRadius: '20px', // Rounded button for a friendly look
+    '&:hover': {
+        backgroundColor: '#D74C3C', // Darker coral on hover
+        transform: 'scale(1.05)', // Slight scaling effect on hover
+    },
+});
+
+const Description = styled(Typography)({
+    color: '#34495E', // Darker text color
+    fontSize: '1.2rem', // Slightly larger font size
+    marginBottom: '16px',
+    lineHeight: 1.5,
+    fontFamily: 'Comic Sans MS, cursive, sans-serif', // Playful font
+});
+
+const Banner = styled(Paper)({
+    backgroundImage: `url(${banner})`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    padding: '48px 24px',
+    borderRadius: '25px',
+    color: '#fff',
+    textAlign: 'center',
+    marginBottom: '48px',
+    position: 'relative',
+    '&:before': {
+        content: '""',
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        backgroundColor: 'rgba(0, 0, 0, 0.55)',
+        borderRadius: '25px',
+    },
+});
+
+const BannerText = styled(Typography)({
+    position: 'relative',
+    fontSize: '3.5rem',
+    fontWeight: 'bold',
+    zIndex: 1,
+    color: '#FFD700', // Gold color for the banner text
+    fontFamily: 'Comic Sans MS, cursive, sans-serif', // Playful font
+    '@media (max-width:600px)': {
+        fontSize: '2.5rem',
+    },
+});
+
+const BannerSubText = styled(Typography)({
+    position: 'relative',
+    marginTop: '10px',
+    fontSize: '1.8rem',
+    zIndex: 1,
+    color: '#FDE3A7', // Light yellow for the subtext
+    fontFamily: 'Comic Sans MS, cursive, sans-serif', // Playful font
+    '@media (max-width:600px)': {
+        fontSize: '1.5rem',
+    },
+});
+
+// New Section for Vision, Mission, Who We Are, What We Do
+const InfoSection = ({ title, description, IconComponent }) => (
+    <Card>
+        <Icon>{IconComponent}</Icon>
+        <Typography variant="h5" gutterBottom>{title}</Typography>
+        <Description>{description}</Description>
+    </Card>
+);
+
 const AboutSection = () => {
-    const classes = useStyles();
-    const theme = useTheme();
-
-    // Dialog state management
-    const [openDialog, setOpenDialog] = useState(false);
-    const [dialogContent, setDialogContent] = useState('');
-
-    const handleClickOpen = (content) => {
-        setDialogContent(content); // Set the content for the modal
-        setOpenDialog(true); // Open the dialog
-    };
-
-    const handleClose = () => {
-        setOpenDialog(false); // Close the dialog
-    };
-
+    const navigate=useNavigate();
+    const handleClick=()=>{
+        navigate("/about-us")
+    }
     return (
-        <Paper className={classes.section}>
-            <Typography variant="h4" className={classes.title}>
-                About Us
-            </Typography>
-            <Grid container spacing={3} justifyContent="center">
-                <Grid item xs={12} sm={6} md={4}>
-                    <div className={classes.programCard}>
-                        <Box className={classes.programIcon}>&#9733;</Box> {/* Star icon for mission */}
-                        <Typography variant="h6" style={{ color: '#F26A2A' }}>Our Mission</Typography>
-                        <Typography variant="body2">
-                            To nurture, inspire, and cultivate young minds through a play-based curriculum.
-                        </Typography>
-                        <Button
-                            variant="contained"
-                            className={classes.knowMoreButton}
-                            onClick={() => handleClickOpen('Our mission is to create a nurturing environment where children learn through play, exploration, and guided experiences. We focus on building foundational skills that prepare children for future academic success while fostering their creativity and emotional development.')}
-                        >
-                            Know More
-                        </Button>
-                    </div>
-                </Grid>
-                <Grid item xs={12} sm={6} md={4}>
-                    <div className={classes.programCard}>
-                        <Box className={classes.programIcon}>&#127891;</Box> {/* Book icon for values */}
-                        <Typography variant="h6" style={{ color: '#2DB8B0' }}>Our Values</Typography>
-                        <Typography variant="body2">
-                            We value creativity, curiosity, and a love for learning.
-                        </Typography>
-                        <Button
-                            variant="contained"
-                            className={classes.knowMoreButton}
-                            onClick={() => handleClickOpen('Our core values center around creativity, curiosity, and respect. We believe that fostering a love of learning in children helps them to develop critical thinking, resilience, and a growth mindset. Every child is encouraged to pursue their interests in a supportive and inclusive environment.')}
-                        >
-                            Know More
-                        </Button>
-                    </div>
-                </Grid>
-                <Grid item xs={12} sm={6} md={4}>
-                    <div className={classes.programCard}>
-                        <Box className={classes.programIcon}>&#128516;</Box> {/* Smiley face icon for environment */}
-                        <Typography variant="h6" style={{ color: '#F26A2A' }}>Our Environment</Typography>
-                        <Typography variant="body2">
-                            We provide a safe, engaging, and supportive environment for children to grow.
-                        </Typography>
-                        <Button
-                            variant="contained"
-                            className={classes.knowMoreButton}
-                            onClick={() => handleClickOpen('Our learning environment is designed to be safe, welcoming, and filled with opportunities for exploration. With a focus on hands-on learning and interactive play, children are free to engage in activities that promote both cognitive and emotional growth.')}
-                        >
-                            Know More
-                        </Button>
-                    </div>
-                </Grid>
-            </Grid>
+        <Root>
+            {/* Banner Section */}
+            <Banner>
+                <BannerText variant="h3">Welcome to Kinderbots Pre-School!</BannerText>
+                <BannerSubText variant="body1">Where learning is fun and creativity grows.</BannerSubText>
+            </Banner>
 
-            {/* Dialog for additional information */}
-            <Dialog
-                open={openDialog}
-                onClose={handleClose}
-                TransitionComponent={Transition}
-                classes={{ paper: classes.dialog }} // Apply custom dialog styles
-            >
-                <DialogTitle className={classes.dialogTitle}>More Information</DialogTitle>
-                <DialogContent>
-                    <Typography className={classes.dialogContent}>{dialogContent}</Typography>
-                </DialogContent>
-                <DialogActions className={classes.dialogActions}>
-                    <Button onClick={handleClose} style={{ backgroundColor: '#004d40', color: '#fff' }}>
-                        Close
-                    </Button>
-                </DialogActions>
-            </Dialog>
+            {/* About Us Section */}
+            <Section>
+                <Title variant="h4">About Kinderbots Pre-School</Title>
+                <SubTitle>Create a joyful, inspiring educational environment for young minds.</SubTitle>
 
-            {/* Background decoration */}
-            <div className={classes.backgroundDecor} style={{ top: '10%', left: '10%' }} />
-            <div className={classes.backgroundDecor} style={{ bottom: '10%', right: '10%' }} />
-        </Paper>
+                <Grid container spacing={4} justifyContent="center">
+                    {/* Our Vision */}
+                    <Grid item xs={12} sm={6} md={3}>
+                        <InfoSection
+                            title="Our Vision"
+                            description="To empower every child with the skills and confidence to succeed in a changing world."
+                            IconComponent={<EmojiObjects />}
+                        />
+                    </Grid>
+
+                    {/* Our Mission */}
+                    <Grid item xs={12} sm={6} md={3}>
+                        <InfoSection
+                            title="Our Mission"
+                            description="To nurture, inspire, and cultivate young minds through a creative, play-based curriculum."
+                            IconComponent={<Favorite />}
+                        />
+                    </Grid>
+
+                    {/* Who We Are */}
+                    <Grid item xs={12} sm={6} md={3}>
+                        <InfoSection
+                            title="Who We Are"
+                            description="A dedicated team of educators passionate about fostering a love of learning in young children."
+                            IconComponent={<School />}
+                        />
+                    </Grid>
+
+                    {/* What We Do */}
+                    <Grid item xs={12} sm={6} md={3}>
+                        <InfoSection
+                            title="What We Do"
+                            description="We create a safe and engaging environment where children can explore, discover, and grow."
+                            IconComponent={<Accessibility />}
+                        />
+                    </Grid>
+                </Grid>
+
+                <KnowMoreButton variant="contained" onClick={handleClick}>Know More</KnowMoreButton>
+            </Section>
+
+            {/* Animation Layer */}
+            <Box
+                sx={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    zIndex: -1,
+                    background: 'linear-gradient(180deg, rgba(255, 105, 180, 0.2), rgba(255, 255, 255, 0.2))',
+                    animation: 'float 6s ease-in-out infinite',
+                    pointerEvents: 'none', // Prevent interactions with the layer
+                }}
+            />
+        </Root>
     );
 };
 
 export default AboutSection;
+
+// CSS Animations
+const style = document.createElement('style');
+style.innerHTML = `
+    @keyframes float {
+        0% { transform: translateY(0); }
+        50% { transform: translateY(-15px); }
+        100% { transform: translateY(0); }
+    }
+`;
+document.head.appendChild(style);

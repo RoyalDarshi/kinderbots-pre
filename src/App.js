@@ -11,6 +11,7 @@ import Programs from './components/Programs';
 import Admissions from './components/Admissions';
 import Contact from './components/Contact';
 import Enrollment from "./components/Enrollment";
+import AboutPage from "./components/AboutPage";
 
 const App = () => {
     return (
@@ -25,6 +26,7 @@ const App = () => {
                         <Route path="/admissions" element={<Admissions />} />
                         <Route path="/contact" element={<Contact />} />
                         <Route path="/enroll" element={<Enrollment />} />
+                        <Route path="/about-us" element={<AboutPage />} />
                     </Routes>
                 </main>
                 <Footer />
