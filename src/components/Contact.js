@@ -16,34 +16,52 @@ const useStyles = makeStyles((theme) => ({
     root: {
         padding: theme.spacing(4),
         minHeight: '100vh',
-        backgroundColor: '#F6F9FC',
+        backgroundColor: '#E8F5E9',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
+        backgroundImage: 'url("/path/to/your/background-image.png")', // Optional background image
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
     },
     paper: {
         padding: theme.spacing(4),
-        backgroundColor: 'white',
-        borderRadius: '8px',
-        boxShadow: theme.shadows[4],
+        backgroundColor: '#FFFFFF !important',
+        borderRadius: '16px',
+        boxShadow: theme.shadows[10],
         width: '100%',
         maxWidth: '600px',
     },
     title: {
-        paddingBottom: theme.spacing(2), // Ensure spacing is applied
+        paddingBottom: theme.spacing(2),
         fontWeight: 'bold',
         color: theme.palette.primary.main,
+        fontSize: '2rem',
+        textAlign: 'center',
     },
     textField: {
         marginBottom: theme.spacing(2),
+        '& .MuiOutlinedInput-root': {
+            '& fieldset': {
+                borderColor: theme.palette.secondary.main,
+            },
+            '&:hover fieldset': {
+                borderColor: theme.palette.secondary.dark,
+            },
+            '&.Mui-focused fieldset': {
+                borderColor: theme.palette.primary.main,
+            },
+        },
     },
     button: {
         marginTop: theme.spacing(2),
         width: '100%',
         backgroundColor: theme.palette.secondary.main,
+        color: '#FFFFFF',
         '&:hover': {
             backgroundColor: theme.palette.secondary.dark,
         },
+        transition: 'background-color 0.3s ease',
     },
 }));
 
@@ -100,6 +118,7 @@ const Contact = () => {
                                 value={formData.name}
                                 onChange={handleChange}
                                 className={classes.textField}
+                                variant="outlined"
                             />
                         </Grid>
 
@@ -114,6 +133,7 @@ const Contact = () => {
                                 value={formData.email}
                                 onChange={handleChange}
                                 className={classes.textField}
+                                variant="outlined"
                             />
                         </Grid>
 
@@ -127,6 +147,7 @@ const Contact = () => {
                                 value={formData.subject}
                                 onChange={handleChange}
                                 className={classes.textField}
+                                variant="outlined"
                             />
                         </Grid>
 
@@ -142,6 +163,7 @@ const Contact = () => {
                                 multiline
                                 rows={4}
                                 className={classes.textField}
+                                variant="outlined"
                             />
                         </Grid>
 
@@ -160,7 +182,12 @@ const Contact = () => {
             </Paper>
 
             {/* Snackbar for submission confirmation */}
-            <Snackbar open={openSnackbar} autoHideDuration={6000} onClose={handleCloseSnackbar}>
+            <Snackbar
+                open={openSnackbar}
+                autoHideDuration={3000}
+                onClose={handleCloseSnackbar}
+                anchorOrigin={{ vertical: 'top', horizontal: 'right' }} // Positioning the Snackbar
+            >
                 <Alert onClose={handleCloseSnackbar} severity="success">
                     Your message has been sent successfully!
                 </Alert>

@@ -4,24 +4,37 @@ import { Box, Typography, Grid } from '@mui/material';
 
 const Section = styled(Box)({
     padding: '40px 20px',
-    backgroundColor: '#FFF3E0',
+    backgroundColor: '#FFFAF0',
     borderRadius: '15px',
     marginBottom: '40px',
-    boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
+    boxShadow: '0 4px 15px rgba(0, 0, 0, 0.2)',
+    position: 'relative',
+    overflow: 'hidden',
+    textAlign: 'center',
 });
 
 const Title = styled(Typography)({
-    textAlign: 'center',
     fontWeight: 'bold',
     fontSize: '2.5rem',
-    color: '#2C3E50',
+    color: '#D81B60',
+    marginBottom: '20px',
 });
 
 const Description = styled(Typography)({
-    textAlign: 'center',
     fontSize: '1.2rem',
-    color: '#34495E',
+    color: '#4A4A4A',
     margin: '20px 0',
+    lineHeight: '1.5',
+});
+
+const FunIcon = styled(Typography)({
+    fontSize: '1.5rem',
+    display: 'inline-block',
+    marginRight: '10px',
+    transition: 'transform 0.3s',
+    '&:hover': {
+        transform: 'scale(1.2)',
+    },
 });
 
 const WhatWeDoSection = () => {
@@ -33,16 +46,24 @@ const WhatWeDoSection = () => {
             </Description>
             <Grid container spacing={2} justifyContent="center">
                 <Grid item xs={12} sm={6}>
-                    <Description>🌼 Play-based learning</Description>
+                    <Description>
+                        <FunIcon>🌼</FunIcon> Play-based learning
+                    </Description>
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                    <Description>📚 Storytelling and language development</Description>
+                    <Description>
+                        <FunIcon>📚</FunIcon> Storytelling and language development
+                    </Description>
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                    <Description>🎨 Arts and crafts</Description>
+                    <Description>
+                        <FunIcon>🎨</FunIcon> Arts and crafts
+                    </Description>
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                    <Description>🎶 Music and movement</Description>
+                    <Description>
+                        <FunIcon>🎶</FunIcon> Music and movement
+                    </Description>
                 </Grid>
             </Grid>
         </Section>

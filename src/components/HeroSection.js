@@ -1,108 +1,148 @@
 import React from 'react';
 import { Typography, Button, Paper } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import heroBackground from '../assets/hero.png';  // Adjust the path as needed
+import Carousel from 'react-material-ui-carousel'; // Ensure to install this package
 
 const useStyles = makeStyles((theme) => ({
     hero: {
         textAlign: 'center',
         marginBottom: `${theme.spacing(4)} !important`,
-        backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${heroBackground}) !important`,
-        backgroundSize: 'cover !important',
-        backgroundPosition: 'center !important',
-        backgroundRepeat: 'no-repeat !important',
-        color: '#FFFFFF !important',
-        padding: `${theme.spacing(8)} !important`,
-        borderRadius: '12px !important',
-        boxShadow: `${theme.shadows[3]} !important`,
         position: 'relative !important',
         overflow: 'hidden !important',
+        borderRadius: '12px !important',
+        backgroundColor: '#FFDD00', // Bright yellow background
+    },
+    carouselItem: {
+        position: 'relative',
+        display: 'flex',
+        justifyContent: 'center', // Center the content
+        alignItems: 'center', // Center vertically
+        height: '600px', // Increased height for better visibility
+        overflow: 'hidden',
+    },
+    image: {
+        width: '100%',
+        height: '100%',
+        objectFit: 'cover',
+        borderRadius: '12px !important',
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        zIndex: 1,
+    },
+    subImage: {
+        width: '100%',
+        height: '100%',
+        objectFit: 'cover',
+        position: 'absolute', // Full background
+        top: 0,
+        left: 0,
+        zIndex: 0, // Behind the main image
+        opacity: 0.5, // Optional: add some transparency
+    },
+    textOverlay: {
+        position: 'relative',
+        zIndex: 2,
+        textAlign: 'center', // Center text
+        color: '#FFFFFF', // White text for contrast
+        padding: theme.spacing(3),
+        backdropFilter: 'blur(5px)', // Adds a blur effect behind the text
+        borderRadius: '12px', // Rounded corners for the overlay
+        backgroundColor: 'rgba(0, 0, 0, 0.6)', // Darker semi-transparent background for better contrast
     },
     heroTitle: {
-        fontSize: '3rem !important',
+        fontSize: '3.5rem !important', // Larger title font
         fontWeight: 'bold !important',
-        textShadow: '3px 3px 5px rgba(0, 0, 0, 0.8) !important',
+        textShadow: '2px 2px 8px rgba(0, 0, 0, 0.8) !important',
         animation: '$fadeIn 1s ease-out !important',
     },
     heroSubtitle: {
-        fontSize: '1.5rem !important',
-        marginBottom: `${theme.spacing(3)} !important`,
+        fontSize: '1.8rem !important', // Larger subtitle font
+        marginBottom: `${theme.spacing(2)} !important`,
+        textShadow: '1px 1px 4px rgba(0, 0, 0, 0.7) !important', // Added text shadow
         animation: '$fadeIn 1.5s ease-out !important',
     },
     button: {
         marginTop: `${theme.spacing(3)} !important`,
-        backgroundColor: '#FFD700 !important',  // Gold color
-        color: 'white !important',
-        '&:hover': {
-            backgroundColor: '#FFA500 !important',  // Orange color
-            transform: 'scale(1.05) !important',
-            transition: 'transform 0.3s !important',
-        },
-        borderRadius: '20px !important',
-        padding: `${theme.spacing(1, 5)} !important`,
+        backgroundColor: '#2C3E50 !important', // Darker button color
+        color: '#FFDD00 !important', // Bright yellow text
+        borderRadius: '20px !important', // Rounded button
+        padding: `${theme.spacing(1.5, 6)} !important`,
         boxShadow: theme.shadows[5] + ' !important',
+        '&:hover': {
+            backgroundColor: '#1A242F !important', // Darker shade on hover
+        },
         animation: '$fadeIn 2s ease-out !important',
-    },
-    balloon: {
-        position: 'absolute !important',
-        width: '100px !important',
-        height: '100px !important',
-        backgroundColor: 'rgba(255, 200, 50, 0.6) !important',
-        borderRadius: '50% !important',
-        boxShadow: `0 0 15px rgba(255, 200, 50, 0.8) !important`,
-        top: '20% !important',
-        left: '10% !important',
-        animation: '$float 3s ease-in-out infinite !important',
-    },
-    balloon2: {
-        position: 'absolute !important',
-        width: '120px !important',
-        height: '120px !important',
-        backgroundColor: 'rgba(255, 105, 180, 0.6) !important',
-        borderRadius: '50% !important',
-        boxShadow: `0 0 15px rgba(255, 105, 180, 0.8) !important`,
-        top: '30% !important',
-        right: '15% !important',
-        animation: '$float 3s ease-in-out infinite !important',
-    },
-    balloon3: {
-        position: 'absolute !important',
-        width: '90px !important',
-        height: '90px !important',
-        backgroundColor: 'rgba(50, 205, 50, 0.6) !important',  // LimeGreen color
-        borderRadius: '50% !important',
-        boxShadow: `0 0 15px rgba(50, 205, 50, 0.8) !important`,
-        top: '10% !important',
-        right: '5% !important',
-        animation: '$float 4s ease-in-out infinite !important',
     },
     '@keyframes fadeIn': {
         '0%': { opacity: 0 },
         '100%': { opacity: 1 },
     },
-    '@keyframes float': {
-        '0%': { transform: 'translateY(0)' },
-        '50%': { transform: 'translateY(-20px)' },
-        '100%': { transform: 'translateY(0)' },
+    // Responsive styles for mobile
+    [theme.breakpoints.down('sm')]: {
+        heroTitle: {
+            fontSize: '2.5rem !important', // Smaller title font for mobile
+        },
+        heroSubtitle: {
+            fontSize: '1.2rem !important', // Smaller subtitle font for mobile
+        },
+        button: {
+            padding: `${theme.spacing(1, 4)} !important`, // Smaller button padding
+        },
     },
 }));
 
 const HeroSection = () => {
     const classes = useStyles();
+
+    const items = [
+        {
+            title: 'Welcome to Kinderbots Pre-School!',
+            subtitle: 'Where Learning is Fun and Engaging',
+            image: 'https://www.littlemillennium.com/assets/img/home-webp/1.webp',
+            subImage: 'https://www.littlemillennium.com/assets/img/home-webp/4.webp',
+        },
+        {
+            title: 'Interactive Learning Activities',
+            subtitle: 'Hands-on experience for children',
+            image: 'https://www.littlemillennium.com/assets/img/home-webp/2.webp',
+            subImage: 'https://www.littlemillennium.com/assets/img/home-webp/9.webp',
+        },
+        {
+            title: 'Nurturing Environment',
+            subtitle: 'Creating a safe and caring space',
+            image: 'https://www.littlemillennium.com/assets/img/home-webp/3.webp',
+            subImage: 'https://www.littlemillennium.com/assets/img/home-webp/6.webp',
+        },
+    ];
+
     return (
         <Paper className={classes.hero}>
-            <div className={`${classes.balloon}`}></div>
-            <div className={`${classes.balloon2}`}></div>
-            <div className={`${classes.balloon3}`}></div>
-            <Typography variant="h2" className={classes.heroTitle} gutterBottom>
-                Welcome to Kinderbots Pre-School!
-            </Typography>
-            <Typography variant="h5" className={classes.heroSubtitle}>
-                Where Learning is Fun and Engaging
-            </Typography>
-            <Button variant="contained" href="/enroll" className={classes.button}>
-                Enroll Now
-            </Button>
+            <Carousel >
+                {items.map((item, index) => (
+                    <div key={index} className={classes.carouselItem}>
+                        {/* Sub image used as full background */}
+                        {/* Main image displayed on top */}
+                        <img
+                            src={item.image}
+                            alt={item.title}
+                            className={classes.image}
+                        />
+                        {/* Centered text overlay */}
+                        <div className={classes.textOverlay}>
+                            <Typography variant="h2" className={classes.heroTitle}>
+                                {item.title}
+                            </Typography>
+                            <Typography variant="h5" className={classes.heroSubtitle}>
+                                {item.subtitle}
+                            </Typography>
+                            <Button variant="contained" href="/enroll" className={classes.button}>
+                                Enroll Now
+                            </Button>
+                        </div>
+                    </div>
+                ))}
+            </Carousel>
         </Paper>
     );
 };

@@ -1,13 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
     Paper,
     Typography,
     Button,
-    Dialog,
-    DialogTitle,
-    DialogContent,
-    DialogActions,
-    Slide,
     Grid,
     Card,
     CardContent,
@@ -17,102 +12,80 @@ import { makeStyles } from '@mui/styles';
 // Define styles using makeStyles
 const useStyles = makeStyles((theme) => ({
     root: {
-        padding: '20px',
-        backgroundColor: '#F0F4F8',
-        minHeight: '100vh',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        backgroundImage: `url("path/to/background-image.jpg")`, // Replace with your background image
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
+        padding: '20px !important',
+        backgroundColor: '#E3F2FD !important', // Light blue background to match playful preschool theme
+        minHeight: '100vh !important',
+        display: 'flex !important',
+        flexDirection: 'column !important',
+        alignItems: 'center !important',
+        justifyContent: 'center !important',
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("https://www.littlemillennium.com/assets/img/home-webp/1.webp") !important`,
+        backgroundRepeat: 'no-repeat !important',
+        backgroundSize: 'cover !important',
+        backgroundPosition: 'center !important',
+        color: '#FFFFFF !important',
     },
     card: {
-        maxWidth: 400,
-        margin: '20px',
-        borderRadius: '16px',
-        boxShadow: theme.shadows[5],
-        backgroundColor: '#FFFAF0',
-        transition: 'transform 0.2s',
+        maxWidth: '400px !important',
+        margin: '20px !important',
+        borderRadius: '16px !important',
+        backgroundColor: '#FFF8E1 !important', // Light yellow for cards
+        boxShadow: `${theme.shadows[5]} !important`,
+        transition: 'transform 0.6s ease, box-shadow 0.4s ease !important',
+
+        // transition
         '&:hover': {
-            transform: 'scale(1.05)',
+            transform: 'scale(1.08) rotate(-3deg) !important', // Slight tilt and scale for playful hover effect
+            boxShadow: `${theme.shadows[12]} !important`,
+            backgroundColor: '#FFF176 !important', // Slightly darker yellow on hover
         },
     },
     title: {
-        color: '#2DB8B0',
-        marginBottom: '10px',
-        textAlign: 'center',
-        fontWeight: 'bold',
-        fontSize: '2rem',
-        textShadow: '1px 1px 2px rgba(0, 0, 0, 0.3)',
+        color: '#FFEB3B !important', // Bright yellow title to stand out
+        marginBottom: '10px !important',
+        textAlign: 'center !important',
+        fontWeight: 'bold !important',
+        fontSize: '2.8rem !important',
+        textShadow: '2px 2px 6px rgba(0, 0, 0, 0.7) !important', // Stronger shadow for better visibility
     },
     sectionTitle: {
-        color: '#FF5722',
-        margin: '20px 0',
-        textAlign: 'center',
-        fontSize: '1.5rem',
+        color: '#FF5722 !important', // Bright orange for section titles
+        margin: '20px 0 !important',
+        textAlign: 'center !important',
+        fontSize: '1.8rem !important',
+        fontWeight: 'bold !important',
+        textTransform: 'uppercase !important',
+        textShadow: '1px 1px 3px rgba(0, 0, 0, 0.6) !important',
     },
     list: {
-        listStyleType: 'circle',
-        paddingLeft: theme.spacing(2),
-        color: '#34495E',
-        margin: '0',
+        listStyleType: 'circle !important',
+        paddingLeft: `${theme.spacing(2)}px !important`,
+        color: '#34495E !important',
+        margin: '0 !important',
     },
     button: {
-        marginTop: '20px',
-        backgroundColor: '#FFDD00',
-        color: '#2C3E50',
+        marginTop: '20px !important',
+        backgroundColor: '#FF4081 !important', // Vibrant pink for the button
+        color: '#FFFFFF !important',
+        fontWeight: 'bold !important',
         '&:hover': {
-            backgroundColor: '#FFD700',
+            backgroundColor: '#F50057 !important', // Darker pink on hover
         },
     },
-    dialog: {
-        background: 'linear-gradient(135deg, #2C3E50 10%, #4CA1AF 90%)',
-        color: '#ECF0F1',
-        width: '95vw',
-        maxWidth: '600px',
-        margin: 'auto',
-        borderRadius: '12px',
-        boxShadow: '0 4px 12px rgba(0, 0, 0, 0.5)',
+    ctaContainer: {
+        marginTop: '40px !important',
+        textAlign: 'center !important',
+        background: 'rgba(255, 255, 255, 0.95) !important', // Slightly darker white with transparency for better contrast
+        borderRadius: '12px !important',
+        padding: '20px !important',
+        boxShadow: `${theme.shadows[5]} !important`,
+        color: '#2C3E50 !important', // Darker text color for better readability
     },
-    dialogTitle: {
-        fontSize: '1.5rem',
-        textAlign: 'center',
-        color: '#F39C12',
-        fontWeight: 'bold',
-    },
-    dialogContent: {
-        color: '#ECF0F1',
-        fontSize: '1rem',
-        padding: '16px',
-        lineHeight: '1.5',
-    },
-    dialogActions: {
-        justifyContent: 'center',
-    },
-}));
 
-// Slide animation for modal
-const Transition = React.forwardRef(function Transition(props, ref) {
-    return <Slide direction="up" ref={ref} {...props} />;
-});
+}));
 
 const Admissions = () => {
     const classes = useStyles();
-
-    // Dialog state management
-    const [openDialog, setOpenDialog] = useState(false);
-    const [dialogContent, setDialogContent] = useState('');
-
-    const handleClickOpen = (content) => {
-        setDialogContent(content);
-        setOpenDialog(true);
-    };
-
-    const handleClose = () => {
-        setOpenDialog(false);
-    };
 
     const admissionRequirements = [
         'Completed application form',
@@ -134,7 +107,7 @@ const Admissions = () => {
             <Typography variant="h4" className={classes.title}>
                 Admissions at Kinderbots Pre-School
             </Typography>
-            <Typography variant="body1" align="center" style={{ margin: '20px 0' }}>
+            <Typography variant="body1" align="center" style={{ margin: '20px 0 !important', color: '#FFFFFF !important' }}>
                 Welcome to the admissions process for Kinderbots Pre-School! We are excited to have your family join our community.
             </Typography>
 
@@ -169,35 +142,19 @@ const Admissions = () => {
             </Grid>
 
             {/* Call to Action Section */}
-            <Typography variant="h5" align="center" className={classes.title}>Ready to Enroll?</Typography>
-            <Typography variant="body1" align="center" style={{ margin: '20px 0' }}>
-                We are excited to welcome your child into our community! Click the button below to start the application process.
-            </Typography>
-            <Button
-                variant="contained"
-                className={classes.button}
-                onClick={() => handleClickOpen("Click here to apply for admissions.")}
-            >
-                Start Application
-            </Button>
-
-            {/* Dialog for additional information */}
-            <Dialog
-                open={openDialog}
-                onClose={handleClose}
-                TransitionComponent={Transition}
-                classes={{ paper: classes.dialog }}
-            >
-                <DialogTitle className={classes.dialogTitle}>More Information</DialogTitle>
-                <DialogContent>
-                    <Typography className={classes.dialogContent}>{dialogContent}</Typography>
-                </DialogContent>
-                <DialogActions className={classes.dialogActions}>
-                    <Button onClick={handleClose} style={{ backgroundColor: '#004d40', color: '#fff' }}>
-                        Close
-                    </Button>
-                </DialogActions>
-            </Dialog>
+            <div className={classes.ctaContainer}>
+                <Typography variant="h5" align="center" className={classes.title}>Ready to Enroll?</Typography>
+                <Typography variant="body1" align="center" style={{ margin: '20px 0 !important' }}>
+                    We are excited to welcome your child into our community! Click the button below to start the application process.
+                </Typography>
+                <Button
+                    variant="contained"
+                    className={classes.button}
+                    href={"/enroll"}
+                >
+                    Enroll
+                </Button>
+            </div>
         </Paper>
     );
 };

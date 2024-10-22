@@ -195,7 +195,7 @@ const AboutSection = () => {
                     </Grid>
                 </Grid>
 
-                <KnowMoreButton variant="contained" onClick={handleClick}>Know More</KnowMoreButton>
+                <KnowMoreButton variant="contained" href={"/about-us"}>Know More</KnowMoreButton>
             </Section>
 
             {/* Animation Layer */}

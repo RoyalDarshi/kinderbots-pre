@@ -16,16 +16,16 @@ const useStyles = makeStyles((theme) => ({
     root: {
         padding: theme.spacing(3),
         minHeight: '100vh',
-        backgroundColor: '#F6F9FC',
+        backgroundColor: '#E8F5E9',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
     },
     paper: {
         padding: theme.spacing(4),
-        backgroundColor: 'white',
-        borderRadius: '8px',
-        boxShadow: theme.shadows[5],
+        backgroundColor: '#ffffff',
+        borderRadius: '16px',
+        boxShadow: theme.shadows[10],
         width: '100%',
         maxWidth: '600px',
     },
@@ -33,16 +33,31 @@ const useStyles = makeStyles((theme) => ({
         paddingBottom: theme.spacing(2),
         fontWeight: 'bold',
         color: theme.palette.primary.main,
+        textAlign: 'center',
+        fontSize: '2rem',
     },
     button: {
         marginTop: theme.spacing(2),
         backgroundColor: theme.palette.secondary.main,
+        color: '#FFFFFF',
         '&:hover': {
             backgroundColor: theme.palette.secondary.dark,
         },
+        transition: 'background-color 0.3s ease',
     },
     textField: {
         marginBottom: theme.spacing(2),
+        '& .MuiOutlinedInput-root': {
+            '& fieldset': {
+                borderColor: theme.palette.primary.light,
+            },
+            '&:hover fieldset': {
+                borderColor: theme.palette.primary.main,
+            },
+            '&.Mui-focused fieldset': {
+                borderColor: theme.palette.secondary.main,
+            },
+        },
     },
 }));
 
@@ -202,7 +217,7 @@ const Enrollment = () => {
             </Paper>
 
             {/* Snackbar for submission confirmation */}
-            <Snackbar open={openSnackbar} autoHideDuration={6000} onClose={handleCloseSnackbar}>
+            <Snackbar open={openSnackbar} autoHideDuration={3000} onClose={handleCloseSnackbar} anchorOrigin={{ vertical: 'top', horizontal: 'right' }}>
                 <Alert onClose={handleCloseSnackbar} severity="success">
                     Enrollment form submitted successfully!
                 </Alert>

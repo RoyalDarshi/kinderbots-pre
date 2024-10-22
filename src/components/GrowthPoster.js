@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
         '&:hover': {
             transform: 'scale(1.1) !important',
             boxShadow: `0 12px 30px rgba(0,0,0,0.2) !important`,
-            border: '2px solid #ff9800 !important',  // Add border glow on hover
+            // border: '2px solid #ff9800 !important',  // Add border glow on hover
         },
     },
     bubble: {

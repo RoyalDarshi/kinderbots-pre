@@ -7,6 +7,8 @@ import Testimonials from '../components/Testimonials';
 import GrowthPoster from '../components/GrowthPoster';
 import FeaturesSection from '../components/FeaturesSection'; // Ensure this component exists
 import FooterSection from "./FooterSection";
+import Carousel from "./Carousel";
+import DirectorMessage from "./DirectorMessage";
 
 const Home = () => {
     return (
@@ -14,6 +16,7 @@ const Home = () => {
             <HeroSection />
             <AboutSection />
             <Programs />
+            <DirectorMessage />
             <Testimonials />
             <GrowthPoster />
             <FeaturesSection />

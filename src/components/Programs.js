@@ -5,100 +5,102 @@ import { useTheme } from '@mui/material/styles';
 
 const useStyles = makeStyles((theme) => ({
     section: {
-        padding: '16px !important',
-        marginTop: '20px !important',
+        padding: '40px !important',
+        backgroundColor: '#FFEB3B !important',
         borderRadius: '12px !important',
-        boxShadow: `${theme.shadows[3]} !important`,
-        backgroundColor: '#FFDD00 !important',
         position: 'relative !important',
         overflow: 'hidden !important',
+        boxShadow: `0px 8px 15px rgba(0, 0, 0, 0.2) !important`,
     },
     title: {
-        color: '#2DB8B0 !important',
-        marginBottom: '12px !important',
+        color: '#0288D1 !important',
+        marginBottom: '32px !important',
         textAlign: 'center !important',
         fontWeight: 'bold !important',
-        fontSize: '6vw !important',
+        fontSize: '5vw !important',
         [theme.breakpoints.up('sm')]: {
-            fontSize: '2vw !important',
+            fontSize: '3vw !important',
         },
     },
     dialog: {
-        background: 'linear-gradient(135deg, #2C3E50 10%, #4CA1AF 90%) !important',
-        color: '#ECF0F1 !important',
-        width: '95vw !important',
+        background: '#FFFFFF !important',
+        borderRadius: '12px !important',
+        boxShadow: '0 4px 20px rgba(0, 0, 0, 0.2) !important',
+        color: '#212121 !important',
+        width: '90vw !important',
         maxWidth: '600px !important',
         margin: 'auto !important',
-        borderRadius: '12px !important',
-        boxShadow: '0 4px 12px rgba(0, 0, 0, 0.5) !important',
+        border: '2px solid #FF9800 !important',
     },
     dialogTitle: {
-        fontSize: '5vw !important',
+        fontSize: '6vw !important',
         textAlign: 'center !important',
-        color: '#F39C12 !important',
+        color: '#FF9800 !important',
         fontWeight: 'bold !important',
-        textShadow: '1px 1px 2px rgba(0, 0, 0, 0.7) !important',
+        padding: '16px 0 !important',
         [theme.breakpoints.up('sm')]: {
-            fontSize: '2.5vw !important',
+            fontSize: '3vw !important',
         },
     },
     dialogContent: {
-        color: '#ECF0F1 !important',
-        textShadow: '1px 1px 3px rgba(0, 0, 0, 0.7) !important',
-        fontSize: '4vw !important',
-        padding: '16px !important',
+        padding: '24px !important',
+        fontSize: '4.5vw !important',
         lineHeight: '1.5 !important',
+        color: '#212121 !important',
         [theme.breakpoints.up('sm')]: {
-            fontSize: '1.5vw !important',
+            fontSize: '1.8vw !important',
         },
     },
     dialogActions: {
         justifyContent: 'center !important',
         marginTop: '20px !important',
+        paddingBottom: '16px !important',
     },
     knowMoreButton: {
-        marginTop: '10px !important',
-        backgroundColor: '#00796b !important',
-        color: '#fff !important',
-        transition: 'background-color 0.3s, transform 0.3s !important',
+        marginTop: '16px !important',
+        padding: '10px 20px !important',
+        backgroundColor: '#00ACC1 !important',
+        color: '#FFFFFF !important',
+        fontWeight: 'bold !important',
+        borderRadius: '8px !important',
+        transition: 'background-color 0.3s ease-in-out, transform 0.3s ease-in-out !important',
         '&:hover': {
-            backgroundColor: '#004d40 !important',
+            backgroundColor: '#00796b !important',
+            transform: 'scale(1.05) !important',
         },
     },
     programCard: {
-        padding: `${theme.spacing(3)} !important`,
+        padding: `${theme.spacing(4)} !important`,
         textAlign: 'center !important',
-        borderRadius: '12px !important',
-        boxShadow: theme.shadows[3],
+        borderRadius: '16px !important',
         backgroundColor: '#FFF !important',
-        transition: 'transform 0.3s, box-shadow 0.3s !important',
+        boxShadow: theme.shadows[4],
+        transition: 'transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out !important',
         '&:hover': {
-            transform: 'scale(1.05)',
-            boxShadow: theme.shadows[10],
+            transform: 'scale(1.05) !important',
+            boxShadow: theme.shadows[12],
         },
     },
     programIcon: {
-        fontSize: '50px !important',
-        marginBottom: `${theme.spacing(1)} !important`,
-        color: '#F26A2A',
+        fontSize: '60px !important',
+        color: '#FF7043 !important',
+        marginBottom: `${theme.spacing(2)} !important`,
     },
     backgroundDecor: {
         position: 'absolute !important',
-        width: '50px !important',
-        height: '50px !important',
+        width: '80px !important',
+        height: '80px !important',
         borderRadius: '50% !important',
-        backgroundColor: 'rgba(255, 255, 255, 0.2) !important',
-        opacity: 0.5,
-        animation: '$pulse 2s infinite !important',
+        backgroundColor: 'rgba(255, 255, 255, 0.3) !important',
+        animation: '$float 6s ease-in-out infinite !important',
     },
-    '@keyframes pulse': {
-        '0%': { transform: 'scale(1)' },
-        '50%': { transform: 'scale(1.05)' },
-        '100%': { transform: 'scale(1)' },
+    '@keyframes float': {
+        '0%': { transform: 'translateY(0)' },
+        '50%': { transform: 'translateY(-15px)' },
+        '100%': { transform: 'translateY(0)' },
     },
 }));
 
-// Slide animation for modal
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
 });
@@ -107,7 +109,6 @@ const ProgramsSection = () => {
     const classes = useStyles();
     const theme = useTheme();
 
-    // Dialog state management
     const [openDialog, setOpenDialog] = useState(false);
     const [dialogContent, setDialogContent] = useState('');
 
@@ -124,47 +125,46 @@ const ProgramsSection = () => {
         {
             name: 'Early Learners',
             description: 'Engaging activities to stimulate young minds.',
-            details: 'This program is designed for children aged 3-5 years, focusing on foundational skills through play and exploration. Each session will incorporate sensory activities, storytime, and guided play to enhance motor skills and social interaction. Our trained educators will provide a nurturing environment that encourages curiosity, creativity, and confidence in young learners. Parents will receive updates on their child’s progress, ensuring a holistic approach to early development.'
+            details: 'This program focuses on foundational skills through fun and exploration, designed for children aged 3-5 years.'
         },
         {
             name: 'Creative Arts',
             description: 'Encouraging creativity through various art forms.',
-            details: 'Children will explore painting, music, and dance to express themselves and build confidence in their creativity. This program fosters self-expression by allowing children to experiment with different materials and techniques. Through structured activities, they will learn about colors, shapes, and rhythm while developing fine motor skills. Each week culminates in a showcase where children can display their creations, helping to boost their self-esteem and public speaking abilities.'
+            details: 'Children will explore painting, music, and dance to express themselves and build confidence in their creativity.'
         },
         {
             name: 'Science Explorers',
             description: 'Hands-on science experiments and activities.',
-            details: 'This program sparks curiosity in young learners through fun and interactive science experiments that promote critical thinking. Each session will feature exciting experiments, such as making slime, growing crystals, and simple physics projects that illustrate basic scientific concepts. Children will work in small groups to encourage teamwork and collaboration, while also developing problem-solving skills. Parents will be invited to special events where their children can present their scientific discoveries.'
+            details: 'Fun and interactive science experiments promote critical thinking and curiosity in young learners.'
         },
         {
             name: 'Language Fun',
-            description: 'Interactive games and activities to enhance language skills.',
-            details: 'Designed for kids to learn new words and improve their communication through stories, songs, and games. The program emphasizes phonemic awareness, vocabulary development, and comprehension skills through engaging storytelling and interactive activities. Children will participate in group discussions, role-playing, and creative writing exercises, helping them to express their thoughts and ideas clearly. Regular assessments will ensure that each child is progressing and receiving the support they need.'
+            description: 'Interactive games to enhance language skills.',
+            details: 'Designed for kids to improve communication through stories, songs, and games.'
         },
         {
             name: 'Nature Adventures',
             description: 'Exploring the outdoors and understanding nature.',
-            details: 'In this program, children will engage in outdoor activities that foster a love for nature and teach them about the environment. They will participate in nature walks, gardening, and environmental crafts that help them understand the importance of conservation. Children will learn to identify local plants and animals, fostering an appreciation for biodiversity. The program aims to develop respect for the environment while encouraging physical activity and teamwork through fun group challenges.'
+            details: 'Outdoor activities to foster a love for nature and teach kids about the environment.'
         },
         {
             name: 'Math Magic',
-            description: 'Fun and engaging activities to enhance math skills.',
-            details: 'This program uses games and interactive challenges to make math fun, helping children develop strong numeracy skills. Activities will include puzzles, group games, and hands-on projects that relate math concepts to real-life situations. By incorporating storytelling and music, children will find joy in learning numbers, shapes, and patterns. Regular assessments will allow for personalized feedback, ensuring that each child is challenged appropriately and supported in their learning journey.'
+            description: 'Engaging activities to enhance math skills.',
+            details: 'Fun games and challenges help children develop strong numeracy skills in a playful environment.'
         },
     ];
-
 
     return (
         <Paper className={classes.section}>
             <Typography variant="h4" className={classes.title}>
                 Our Programs
             </Typography>
-            <Grid container spacing={3} justifyContent="center">
+            <Grid container spacing={4} justifyContent="center">
                 {programs.map((program) => (
                     <Grid item xs={12} sm={6} md={4} key={program.name}>
                         <div className={classes.programCard}>
-                            <Box className={classes.programIcon}>&#127859;</Box> {/* Icon for the program */}
-                            <Typography variant="h6" style={{ color: '#2DB8B0' }}>{program.name}</Typography>
+                            <Box className={classes.programIcon}>&#127859;</Box> {/* Icon for each program */}
+                            <Typography variant="h6" style={{ color: '#0288D1', fontWeight: 'bold' }}>{program.name}</Typography>
                             <Typography variant="body2">{program.description}</Typography>
                             <Button
                                 variant="contained"
@@ -178,7 +178,6 @@ const ProgramsSection = () => {
                 ))}
             </Grid>
 
-            {/* Dialog for additional information */}
             <Dialog
                 open={openDialog}
                 onClose={handleClose}
@@ -190,15 +189,15 @@ const ProgramsSection = () => {
                     <Typography className={classes.dialogContent}>{dialogContent}</Typography>
                 </DialogContent>
                 <DialogActions className={classes.dialogActions}>
-                    <Button onClick={handleClose} style={{ backgroundColor: '#004d40', color: '#fff' }}>
+                    <Button onClick={handleClose} className={classes.knowMoreButton}>
                         Close
                     </Button>
                 </DialogActions>
             </Dialog>
 
-            {/* Background decoration */}
-            <div className={classes.backgroundDecor} style={{ top: '10%', left: '10%' }} />
-            <div className={classes.backgroundDecor} style={{ bottom: '10%', right: '10%' }} />
+            {/* Decorative animated elements */}
+            <div className={classes.backgroundDecor} style={{ top: '10%', left: '15%' }} />
+            <div className={classes.backgroundDecor} style={{ bottom: '15%', right: '20%' }} />
         </Paper>
     );
 };
