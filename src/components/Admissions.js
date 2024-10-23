@@ -13,7 +13,7 @@ import { makeStyles } from '@mui/styles';
 const useStyles = makeStyles((theme) => ({
     root: {
         padding: '20px !important',
-        backgroundColor: '#E3F2FD !important', // Light blue background to match playful preschool theme
+        backgroundColor: '#E3F2FD !important', // Light blue background for a playful preschool theme
         minHeight: '100vh !important',
         display: 'flex !important',
         flexDirection: 'column !important',
@@ -33,20 +33,20 @@ const useStyles = makeStyles((theme) => ({
         boxShadow: `${theme.shadows[5]} !important`,
         transition: 'transform 0.6s ease, box-shadow 0.4s ease !important',
 
-        // transition
+        // Transition on hover
         '&:hover': {
-            transform: 'scale(1.08) rotate(-3deg) !important', // Slight tilt and scale for playful hover effect
+            transform: 'scale(1.08) rotate(-3deg) !important', // Tilt and scale effect for a playful hover
             boxShadow: `${theme.shadows[12]} !important`,
             backgroundColor: '#FFF176 !important', // Slightly darker yellow on hover
         },
     },
     title: {
-        color: '#FFEB3B !important', // Bright yellow title to stand out
+        color: '#FFEB3B !important', // Bright yellow for the title
         marginBottom: '10px !important',
         textAlign: 'center !important',
         fontWeight: 'bold !important',
         fontSize: '2.8rem !important',
-        textShadow: '2px 2px 6px rgba(0, 0, 0, 0.7) !important', // Stronger shadow for better visibility
+        textShadow: '2px 2px 6px rgba(0, 0, 0, 0.7) !important', // Stronger shadow for visibility
     },
     sectionTitle: {
         color: '#FF5722 !important', // Bright orange for section titles
@@ -75,13 +75,12 @@ const useStyles = makeStyles((theme) => ({
     ctaContainer: {
         marginTop: '40px !important',
         textAlign: 'center !important',
-        background: 'rgba(255, 255, 255, 0.95) !important', // Slightly darker white with transparency for better contrast
+        background: 'rgba(255, 255, 255, 0.95) !important', // Slightly transparent white for contrast
         borderRadius: '12px !important',
         padding: '20px !important',
         boxShadow: `${theme.shadows[5]} !important`,
         color: '#2C3E50 !important', // Darker text color for better readability
     },
-
 }));
 
 const Admissions = () => {

@@ -73,6 +73,7 @@ const Navbar = () => {
         { label: 'About', icon: <InfoIcon />, link: '/about' },
         { label: 'Programs', icon: <SchoolIcon />, link: '/programs' },
         { label: 'Admissions', icon: <LocalLibraryIcon />, link: '/admissions' },
+        { label: 'Franchise', icon: <LocalLibraryIcon />, link: '/franchise' },
         { label: 'Contact', icon: <ContactMailIcon />, link: '/contact' },
         { label: 'Enroll', icon: <ContactMailIcon />, link: '/enroll' },
     ];

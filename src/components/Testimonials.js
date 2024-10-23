@@ -9,9 +9,13 @@ const useStyles = makeStyles((theme) => ({
         borderRadius: '12px !important',
         marginBottom: `${theme.spacing(4)} !important`,
         boxShadow: `${theme.shadows[3]} !important`,
-        backgroundColor: '#FFDD00 !important',
+        backgroundColor: '#FFD700 !important',  // A bright, cheerful yellow
         position: 'relative !important',
         overflow: 'hidden !important',
+        transition: 'background-color 0.4s ease-in-out !important',
+        '&:hover': {
+            backgroundColor: '#FFEB3B !important', // Slight change on hover for engagement
+        },
     },
     title: {
         color: '#2DB8B0 !important',
@@ -19,9 +23,10 @@ const useStyles = makeStyles((theme) => ({
         textAlign: 'center !important',
         fontWeight: 'bold !important',
         animation: '$fadeIn 1s ease-out !important', // Fade-in animation
+        fontSize: '2.5rem !important',
     },
     testimonial: {
-        backgroundColor: '#E8F7FA !important',
+        backgroundColor: '#E0F7FA !important',  // Light cyan for a fresh feel
         padding: `${theme.spacing(3)} !important`,
         borderRadius: '10px !important',
         textAlign: 'center !important',
@@ -31,8 +36,9 @@ const useStyles = makeStyles((theme) => ({
         overflow: 'hidden !important',
         transition: 'transform 0.3s ease, box-shadow 0.3s ease !important',
         '&:hover': {
-            transform: 'translateY(-5px) scale(1.02) !important', // Slight lift effect on hover
+            transform: 'translateY(-5px) scale(1.05) !important', // Slight lift and zoom effect
             boxShadow: theme.shadows[5],
+            backgroundColor: '#C8E6C9 !important', // Soft green on hover
         },
     },
     quoteIcon: {
@@ -40,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
         top: '10px !important',
         left: '10px !important',
         fontSize: '30px !important',
-        color: '#F26A2A !important',
+        color: '#FF7043 !important',  // Bright orange for contrast
         opacity: 0.3,
     },
     '@keyframes fadeIn': {
