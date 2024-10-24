@@ -29,27 +29,27 @@ const useStyles = makeStyles((theme) => ({
         maxWidth: '400px !important',
         margin: '20px !important',
         borderRadius: '16px !important',
-        backgroundColor: '#FFF8E1 !important', // Light yellow for cards
+        backgroundColor: '#FFEB3B !important', // Bright yellow for cards
         boxShadow: `${theme.shadows[5]} !important`,
         transition: 'transform 0.6s ease, box-shadow 0.4s ease !important',
 
         // Transition on hover
         '&:hover': {
-            transform: 'scale(1.08) rotate(-3deg) !important', // Tilt and scale effect for a playful hover
+            transform: 'scale(1.05) !important', // Slight scale effect for hover
             boxShadow: `${theme.shadows[12]} !important`,
-            backgroundColor: '#FFF176 !important', // Slightly darker yellow on hover
+            backgroundColor: '#FFD54F !important', // Slightly darker yellow on hover
         },
     },
     title: {
-        color: '#FFEB3B !important', // Bright yellow for the title
+        color: '#FF5722 !important', // Bright orange for the title
         marginBottom: '10px !important',
         textAlign: 'center !important',
         fontWeight: 'bold !important',
         fontSize: '2.8rem !important',
-        textShadow: '2px 2px 6px rgba(0, 0, 0, 0.7) !important', // Stronger shadow for visibility
+        textShadow: '2px 2px 6px rgba(0, 0, 0, 0.7) !important',
     },
     sectionTitle: {
-        color: '#FF5722 !important', // Bright orange for section titles
+        color: '#4CAF50 !important', // Bright green for section titles
         margin: '20px 0 !important',
         textAlign: 'center !important',
         fontSize: '1.8rem !important',
@@ -79,7 +79,7 @@ const useStyles = makeStyles((theme) => ({
         borderRadius: '12px !important',
         padding: '20px !important',
         boxShadow: `${theme.shadows[5]} !important`,
-        color: '#2C3E50 !important', // Darker text color for better readability
+        color: '#2C3E50 !important',
     },
 }));
 
@@ -99,6 +99,13 @@ const Admissions = () => {
         'Schedule a tour of our facility.',
         'Participate in an interview with our admissions team.',
         'Receive notification of admission status.',
+    ];
+
+    const parentTestimonials = [
+        '"My child loves attending Kinderbots Pre-School! The teachers are caring and attentive."',
+        '"A wonderful community that encourages learning and creativity!"',
+        '"I appreciate the open communication and support from the staff."',
+        '"Our child has blossomed socially and academically since joining!"',
     ];
 
     return (

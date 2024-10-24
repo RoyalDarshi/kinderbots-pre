@@ -6,14 +6,20 @@ import InvestmentSection from './InvestmentSection';
 import CallToActionSection from './CallToActionSection';
 import FrenchiseSetup from "./FrenchiseSetup";
 import FrenchiseFee from "./FrenchiseFee";
+import FrenchiseInvestment from "./FrenchiseInvestment";
+import DedicatedManager from "./DedicatedManager";
+import TimelyDelivery from "./TimelyDelivery";
 
 const FranchisePage = () => {
     return (
         <Box>
             <HeroSection />
             <BenefitsSection />
+            <FrenchiseInvestment />
             <FrenchiseFee />
             <FrenchiseSetup />
+            <TimelyDelivery />
+            <DedicatedManager />
             <InvestmentSection />
             <CallToActionSection />
         </Box>
