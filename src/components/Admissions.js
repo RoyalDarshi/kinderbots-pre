@@ -12,74 +12,93 @@ import { makeStyles } from '@mui/styles';
 // Define styles using makeStyles
 const useStyles = makeStyles((theme) => ({
     root: {
-        padding: '20px !important',
-        backgroundColor: '#E3F2FD !important', // Light blue background for a playful preschool theme
+        padding: '60px 20px !important',
+        backgroundColor: '#E3F2FD !important',
         minHeight: '100vh !important',
         display: 'flex !important',
         flexDirection: 'column !important',
         alignItems: 'center !important',
         justifyContent: 'center !important',
-        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("https://www.littlemillennium.com/assets/img/home-webp/1.webp") !important`,
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("https://www.littlemillennium.com/assets/img/home-webp/1.webp") !important`,
         backgroundRepeat: 'no-repeat !important',
         backgroundSize: 'cover !important',
         backgroundPosition: 'center !important',
         color: '#FFFFFF !important',
+        fontFamily: 'Nunito, sans-serif !important',
     },
     card: {
-        maxWidth: '400px !important',
-        margin: '20px !important',
-        borderRadius: '16px !important',
-        backgroundColor: '#FFEB3B !important', // Bright yellow for cards
+        maxWidth: '500px !important',
+        margin: '30px !important',
+        borderRadius: '20px !important',
+        backgroundColor: '#FFEB3B !important',
+        padding: '25px !important',
         boxShadow: `${theme.shadows[5]} !important`,
-        transition: 'transform 0.6s ease, box-shadow 0.4s ease !important',
-
-        // Transition on hover
+        transition: 'transform 0.5s ease, box-shadow 0.4s ease !important',
         '&:hover': {
-            transform: 'scale(1.05) !important', // Slight scale effect for hover
+            transform: 'scale(1.05) !important',
             boxShadow: `${theme.shadows[12]} !important`,
-            backgroundColor: '#FFD54F !important', // Slightly darker yellow on hover
+            backgroundColor: '#FFD54F !important',
         },
     },
     title: {
-        color: '#FF5722 !important', // Bright orange for the title
-        marginBottom: '10px !important',
+        color: '#FF5722 !important',
+        marginBottom: '30px !important',
         textAlign: 'center !important',
         fontWeight: 'bold !important',
-        fontSize: '2.8rem !important',
-        textShadow: '2px 2px 6px rgba(0, 0, 0, 0.7) !important',
+        fontSize: '3.5rem !important',
+        fontFamily: 'Poppins, sans-serif !important',
+        letterSpacing: '0.5px !important',
+        textShadow: '2px 2px 5px rgba(0, 0, 0, 0.6) !important',
     },
     sectionTitle: {
-        color: '#4CAF50 !important', // Bright green for section titles
+        color: '#4CAF50 !important',
         margin: '20px 0 !important',
         textAlign: 'center !important',
-        fontSize: '1.8rem !important',
-        fontWeight: 'bold !important',
-        textTransform: 'uppercase !important',
-        textShadow: '1px 1px 3px rgba(0, 0, 0, 0.6) !important',
+        fontSize: '2.2rem !important',
+        fontWeight: '600 !important',
+        fontFamily: 'Poppins, sans-serif !important',
+        letterSpacing: '0.3px !important',
+        textShadow: '1px 1px 3px rgba(0, 0, 0, 0.4) !important',
     },
     list: {
-        listStyleType: 'circle !important',
-        paddingLeft: `${theme.spacing(2)}px !important`,
-        color: '#34495E !important',
+        listStyleType: 'disc !important',
+        paddingLeft: '25px !important',
         margin: '0 !important',
+        fontFamily: 'Nunito, sans-serif !important',
+        fontSize: '1.3rem !important',
+        '& li': {
+            paddingBottom: '12px !important',  // Added padding between list items
+        },
     },
     button: {
-        marginTop: '20px !important',
-        backgroundColor: '#FF4081 !important', // Vibrant pink for the button
+        marginTop: '30px !important',
+        backgroundColor: '#FF4081 !important',
         color: '#FFFFFF !important',
         fontWeight: 'bold !important',
+        fontFamily: 'Poppins, sans-serif !important',
+        fontSize: '1.5rem !important',
+        borderRadius: '8px !important',
+        padding: '12px 30px !important',
         '&:hover': {
-            backgroundColor: '#F50057 !important', // Darker pink on hover
+            backgroundColor: '#F50057 !important',
         },
     },
     ctaContainer: {
-        marginTop: '40px !important',
+        marginTop: '50px !important',
         textAlign: 'center !important',
-        background: 'rgba(255, 255, 255, 0.95) !important', // Slightly transparent white for contrast
-        borderRadius: '12px !important',
-        padding: '20px !important',
+        background: 'rgba(255, 255, 255, 0.85) !important',
+        borderRadius: '16px !important',
+        padding: '40px !important',
         boxShadow: `${theme.shadows[5]} !important`,
         color: '#2C3E50 !important',
+        fontFamily: 'Nunito, sans-serif !important',
+        fontSize: '1.3rem !important',
+    },
+    description: {
+        marginBottom: '40px !important',
+        color: '#FFFFFF !important',
+        fontSize: '1.7rem !important',
+        textAlign: 'center !important',
     },
 }));
 
@@ -101,24 +120,16 @@ const Admissions = () => {
         'Receive notification of admission status.',
     ];
 
-    const parentTestimonials = [
-        '"My child loves attending Kinderbots Pre-School! The teachers are caring and attentive."',
-        '"A wonderful community that encourages learning and creativity!"',
-        '"I appreciate the open communication and support from the staff."',
-        '"Our child has blossomed socially and academically since joining!"',
-    ];
-
     return (
         <Paper className={classes.root}>
             <Typography variant="h4" className={classes.title}>
                 Admissions at Kinderbots Pre-School
             </Typography>
-            <Typography variant="body1" align="center" style={{ margin: '20px 0 !important', color: '#FFFFFF !important' }}>
+            <Typography variant="body1" className={classes.description}>
                 Welcome to the admissions process for Kinderbots Pre-School! We are excited to have your family join our community.
             </Typography>
 
-            <Grid container justifyContent="center" spacing={3}>
-                {/* Admission Requirements Card */}
+            <Grid container justifyContent="center" spacing={4}>
                 <Grid item>
                     <Card className={classes.card}>
                         <CardContent>
@@ -132,7 +143,6 @@ const Admissions = () => {
                     </Card>
                 </Grid>
 
-                {/* Admission Process Card */}
                 <Grid item>
                     <Card className={classes.card}>
                         <CardContent>
@@ -147,10 +157,11 @@ const Admissions = () => {
                 </Grid>
             </Grid>
 
-            {/* Call to Action Section */}
             <div className={classes.ctaContainer}>
-                <Typography variant="h5" align="center" className={classes.title}>Ready to Enroll?</Typography>
-                <Typography variant="body1" align="center" style={{ margin: '20px 0 !important' }}>
+                <Typography variant="h5" style={{ marginBottom: '20px', fontWeight: 'bold' }}>
+                    Ready to Enroll?
+                </Typography>
+                <Typography variant="body1" style={{ marginBottom: '30px', fontSize: '1.5rem' }}>
                     We are excited to welcome your child into our community! Click the button below to start the application process.
                 </Typography>
                 <Button
