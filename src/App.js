@@ -17,6 +17,7 @@ import FranchiseForm from "./components/FrenchiseForm";
 import ProgramPage from "./components/ProgramPage";
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import ContactPage from "./components/ContactPage";
 
 
 const App = () => {
@@ -30,7 +31,7 @@ const App = () => {
                         <Route path="/about" element={<About />} />
                         <Route path="/programs" element={<ProgramPage />} />
                         <Route path="/admissions" element={<Admissions />} />
-                        <Route path="/contact" element={<Contact />} />
+                        <Route path="/contact" element={<ContactPage />} />
                         <Route path="/franchise" element={<FranchisePage />} />
                         <Route path="/franchise-form" element={<FranchiseForm />} />
                         <Route path="/enroll" element={<Enrollment />} />

@@ -9,6 +9,8 @@ import FrenchiseFee from "./FrenchiseFee";
 import FrenchiseInvestment from "./FrenchiseInvestment";
 import DedicatedManager from "./DedicatedManager";
 import TimelyDelivery from "./TimelyDelivery";
+import Payment from "./Payment";
+import BrandBenifit from "./BrandBenifit";
 
 const FranchisePage = () => {
     return (
@@ -20,7 +22,9 @@ const FranchisePage = () => {
             <FrenchiseSetup />
             <TimelyDelivery />
             <DedicatedManager />
+            <BrandBenifit />
             <InvestmentSection />
+            <Payment />
             <CallToActionSection />
         </Box>
     );
